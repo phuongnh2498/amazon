@@ -2,12 +2,10 @@ import React from 'react'
 import Slider from './Slider/Slider'
 import MiniSlider from './Slider__mini/Slider'
 import CategoryCard from './CategoryCard'
-import {categories} from '../mockData'
+import {categories,discoverObject,products} from '../mockData'
 
 export default function Home() {
     const slides = ["./slide1.jpg","./slide2.jpg","./slide3.jpg"];
-    const slides1 = [['/discover/discover0.png','/discover/discover1.jpg','/discover/discover2.jpg','/discover/discover4.jpg','/discover/discover5.jpg',]];
-    const slides2 = [['/discover/discover0.png','/discover/discover1.jpg','/discover/discover2.jpg','/discover/discover4.jpg','/discover/discover5.jpg',]];
     
     return (
         <div className = "home">
@@ -39,10 +37,16 @@ export default function Home() {
                 </div>
                 {categories.map((item,index)=><CategoryCard key={index} categoryTitle={item.title} categoryImg={item.img} categoryLink={item.link}/>)}
             </div>
-            <div className="carousel__mini">
-                <MiniSlider  slides={slides1}/>
+            <div className="home__content"> 
+                    <MiniSlider categoryName="Discover Amazon" cateValue="discoverObject" categoryLink="#" data={discoverObject}/>
+                    <MiniSlider categoryName="Electronics Products" cateValue="electronics" categoryLink="#" data={products}/>
+                    <MiniSlider categoryName="Jewelery Products" cateValue="jewelery" categoryLink="#" data={products}/>
+                    <MiniSlider categoryName="Men Clothing" cateValue="men clothing" categoryLink="#" data={products}/>
+                    <MiniSlider categoryName="Women Clothing" cateValue="women clothing" categoryLink="#" data={products}/>
             </div>
-
+            <div className="bottom__slide">
+                <MiniSlider categoryName="Best sellers in Kindle eBooks" categoryLink="#" data={products}/>
+            </div>
         </div>
     )
 }
