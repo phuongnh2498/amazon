@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
             <div className="bottomLogo">
                 <Link to="/">
-                    <img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" />
+                    <img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" alt=""/>
                 </Link>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from './Slider/Slider'
 import MiniSlider from './Slider__mini/Slider'
-import CategoryCard from './CategoryCard'
+import CategoryCard from './Home/CategoryCard'
 import {categories,discoverObject,products} from '../mockData'
 
 export default function Home() {
@@ -33,7 +33,7 @@ export default function Home() {
                                 <p>Toys {"&"} Games</p>
                             </div>
                         </div>
-                        <a href="#" className="card__link">Shop now</a>
+                        <a href="/products" className="card__link">Shop now</a>
                 </div>
                 {categories.map((item,index)=><CategoryCard key={index} categoryTitle={item.title} categoryImg={item.img} categoryLink={item.link}/>)}
             </div>
