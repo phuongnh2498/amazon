@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {products} from '../mockData'
 export default function ProductsPage() {
 
@@ -12,14 +13,58 @@ export default function ProductsPage() {
                     <ul>
                             {category.map((cat,index)=><li key={index}>{cat}</li>)}
                     </ul>
-                </div>            
+                </div>      
             </div>
             <div className="pagebody__content">
+                <div className="style__line"/>
                 <div className="pagebody__content__card">
-                    <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt=""/>
-                    <h3>Command Picture Hanging Strips Heavy Duty, Large, White, Holds 16 lbs, 14-Pairs</h3>
-                    <span>$9</span>
+                    <div className="card__img">
+                       <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt=""/>
+                    </div>
+                    <Link to="item/1">Command Picture Hanging Strips Heavy Duty, Large, White, Holds 16 lbs, 14-Pairs</Link>
+                    <div className="card__bot">
+                        <span className="card__price">$9</span>
+                        <button className="btn__add">Add</button>
+                    </div>
                 </div>
+                <div className="pagebody__content__card">
+                    <div className="card__img">
+                       <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt=""/>
+                    </div>
+                    <Link to="item/1">Command Picture Hanging Strips Heavy Duty, Large, White, Holds 16 lbs, 14-Pairs</Link>
+                    <div className="card__bot">
+                        <span className="card__price">$9</span>
+                        <button className="btn__add">Add</button>
+                    </div>
+                </div>                <div className="pagebody__content__card">
+                    <div className="card__img">
+                       <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt=""/>
+                    </div>
+                    <Link to="item/1">Command Picture Hanging Strips Heavy Duty, Large, White, Holds 16 lbs, 14-Pairs</Link>
+                    <div className="card__bot">
+                        <span className="card__price">$9</span>
+                        <button className="btn__add">Add</button>
+                    </div>
+                </div>                <div className="pagebody__content__card">
+                    <div className="card__img">
+                       <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt=""/>
+                    </div>
+                    <Link to="item/1">Command Picture Hanging Strips Heavy Duty, Large, White, Holds 16 lbs, 14-Pairs</Link>
+                    <div className="card__bot">
+                        <span className="card__price">$9</span>
+                        <button className="btn__add">Add</button>
+                    </div>
+                </div>                <div className="pagebody__content__card">
+                    <div className="card__img">
+                       <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt=""/>
+                    </div>
+                    <Link to="item/1">Command Picture Hanging Strips Heavy Duty, Large, White, Holds 16 lbs, 14-Pairs</Link>
+                    <div className="card__bot">
+                        <span className="card__price">$9</span>
+                        <button className="btn__add">Add</button>
+                    </div>
+                </div>
+ 
             </div>
         </div>
     )
