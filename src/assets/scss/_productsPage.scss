@@ -1,0 +1,30 @@
+.pagebody{
+    max-width: 1500px;
+    margin: 0 auto;
+
+}
+.leftsection{
+    height: 100%;
+    max-width: 372px;
+    float: left;
+    min-width: 197.6px;
+    width: calc(.2 * (100vw - 44px));
+    & h3{
+        font-size: 14px;
+    }
+    &__list ul{
+        list-style: none;
+        & li{
+            font-size: 13.3px;
+            font-weight: 500;
+        }
+    }
+}
+.pagebody__content__card{
+    max-width: 300px;
+    max-height: 540px;
+    & img{
+        max-width: 300px;
+        max-height: 540px;
+    }
+}

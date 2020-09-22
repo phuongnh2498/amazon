@@ -1,7 +1,8 @@
 import React from 'react'
 import {products} from '../mockData'
 export default function ProductsPage() {
-    const category = products.map(item => item.age)
+
+    const category = products.map(item => item.category)
     .filter((value, index, self) => self.indexOf(value) === index);
     return (
         <div className="pagebody">
