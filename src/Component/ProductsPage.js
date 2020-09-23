@@ -7,16 +7,20 @@ export default function ProductsPage() {
     .filter((value, index, self) => self.indexOf(value) === index);
     return (
         <div className="pagebody">
+                <h1 className="pagebody__top">
+                        over 60,000 results for "dog toys"
+                </h1>
             <div className="leftsection">
+                <div className="leftsection__category">
                 <h3>Other category</h3>
                 <div className="leftsection__list">
                     <ul>
                             {category.map((cat,index)=><li key={index}>{cat}</li>)}
                     </ul>
                 </div>      
+                </div>
             </div>
             <div className="pagebody__content">
-                <div className="style__line"/>
                 <div className="pagebody__content__card">
                     <div className="card__img">
                        <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt=""/>
