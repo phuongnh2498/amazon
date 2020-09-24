@@ -1,14 +1,26 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {products} from '../mockData'
+import MiniSlider from './Slider__mini/Slider'
 export default function ProductsPage() {
 
     const category = products.map(item => item.category)
     .filter((value, index, self) => self.indexOf(value) === index);
     return (
+        <>
         <div className="pagebody">
                 <h1 className="pagebody__top">
-                        over 60,000 results for "dog toys"
+                    <div className="top__container">
+                        <span className="top__resultText">over 60,000 results for "dog toys"</span>
+                        <div className="top__sortby">
+                            <span className="top__sortbytext">Sort by </span>
+                            <select className="top__sortby__selection">
+                                <option>Featured</option>
+                                <option>Price:low to high</option>
+                                <option>Price:high to low</option>
+                            </select>
+                        </div>
+                    </div>
                 </h1>
             <div className="leftsection">
                 <div className="leftsection__category">
@@ -68,8 +80,11 @@ export default function ProductsPage() {
                         <button className="btn__add">Add</button>
                     </div>
                 </div>
- 
             </div>
         </div>
+                    <div className="bottom__slider">
+            <MiniSlider categoryName="Other Items" cateValue="" categoryLink="#" data={products}/>
+            </div>
+            </>
     )
 }
