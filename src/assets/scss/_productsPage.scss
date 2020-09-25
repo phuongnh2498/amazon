@@ -5,21 +5,32 @@
     width: 100%;
 
     & .pagebody__top{
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
         box-shadow: 0 0 10px #ddd;
         background-color: #fff;
         font-size: 15px;
         width: 100%;
-        height: 20px;
+        height: 40px;
         font-weight: 400!important;
         font-style: normal!important;
         text-transform: none!important;
         text-decoration: none!important;
+        & .top__resultText{
+
+            font-size: 13px;
+        line-height: 19px;
+        font-family: "Amazon Ember",Arial,sans-serif;
+        & b{
+            color: #c45500;
+            font-weight: 700;
+        }
+        }
         & .top__container{
             width: 77%;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
         }
@@ -37,26 +48,21 @@
 .leftsection{
     float: left;
     box-sizing: border-box;
-    padding: 10px;
     margin: 0;
     max-width: 340px;
+    font-size: 12px;
     min-width:100px;
     & .leftsection__category{
         min-height: 500px;
         width: 100%;
         border-right: 2px solid #ddd;
     }
-    & h3{
-        font-size: 14px;
-    }
+
     &__list {
         & ul{
         list-style: none;
         }
-        & li{
-            font-size: 13.3px;
-            font-weight: 500;
-        }
+
     }
 }
 .pagebody__content{

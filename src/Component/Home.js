@@ -3,6 +3,7 @@ import Slider from './Slider/Slider'
 import MiniSlider from './Slider__mini/Slider'
 import CategoryCard from './Home/CategoryCard'
 import {categories,discoverObject,products} from '../mockData'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
     const slides = ["./slide1.jpg","./slide2.jpg","./slide3.jpg"];
@@ -33,7 +34,7 @@ export default function Home() {
                                 <p>Toys {"&"} Games</p>
                             </div>
                         </div>
-                        <a href="/products" className="card__link">Shop now</a>
+                        <Link to="/products" className="card__link">Shop now</Link>
                 </div>
                 {categories.map((item,index)=><CategoryCard key={index} categoryTitle={item.title} categoryImg={item.img} categoryLink={item.link}/>)}
             </div>
