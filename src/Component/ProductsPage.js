@@ -6,6 +6,7 @@ import MiniSlider from './Slider__mini/Slider'
 export default function ProductsPage() {
 
     const prod = [...products];
+
     const sortData = {
         lowtohigh:"lowtohigh",
         hightolow:"hightolow",
@@ -16,14 +17,15 @@ export default function ProductsPage() {
     const [sortValue, setSort] = useState("featured")
 
     useEffect(()=>{
-        if(sortValue === sortData.lowtohigh)
-        setProducts(prev=>prev.sort((a,b)=>a.price-b.price))
-        else if(sortValue === sortData.hightolow)
-        setProducts(prev=>prev.sort((a,b)=>b.price-a.price))
-        else
-        setProducts(prod)
 
-        console.log(products)
+        if(sortValue===sortData.lowtohigh)
+            setProducts(prod.sort((a,b)=>a.price-b.price))
+        else if(sortValue===sortData.hightolow)
+            setProducts(prod.sort((a,b)=>b.price-a.price))
+        else
+         setProducts(prod)
+
+        console.log(prod)
     },[sortValue])
 
     const category = products.map(item => item.category)
@@ -32,7 +34,6 @@ export default function ProductsPage() {
      const handleSortBy = (e) => {
 
          setSort(e.target.value)
-        console.log(sortValue)
 
     }
     return (
@@ -44,9 +45,9 @@ export default function ProductsPage() {
                         <div className="top__sortby">
                             <span className="top__sortbytext">Sort by </span>
                             <select value={sortValue} onChange={handleSortBy} className="top__sortby__selection">
-                                <option value="featured">Featured</option>
-                                <option value="lowtohigh">Price:low to high</option>
-                                <option value="hightolow">Price:high to low</option>
+                                <option value={sortData.featured}>Featured</option>
+                                <option value={sortData.lowtohigh}>Price:low to high</option>
+                                <option value={sortData.hightolow}>Price:high to low</option>
                             </select>
                         </div>
                     </div>

@@ -73,14 +73,15 @@
 }
 .pagebody__content__card{
     max-width: 298px;
-    max-height: 537;
-    margin: 13px;
+    max-height: 537px;
+    margin: 13px ;
+    box-sizing: border-box;
     border-bottom: 2px solid #ddd;
     & .card__img{
         max-width: 100%;
-        max-height: 100%;
         text-align: center;
         padding: 28px;
+        height: 348px;
         & img{
             width: auto;
             height: auto;
@@ -89,6 +90,7 @@
         }
     }
     & a{
+       height: 40px;
         margin: 10px 0 5px 0;
         text-decoration: none;
         display: block;
