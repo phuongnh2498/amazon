@@ -1,7 +1,8 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useMemo} from 'react'
 import {Link} from 'react-router-dom'
 import ProductCard from './ProductPage/ProductCard'
 import {products} from '../mockData'
+import {Pagination} from 'antd'
 import MiniSlider from './Slider__mini/Slider'
 export default function ProductsPage() {
 
@@ -64,6 +65,9 @@ export default function ProductsPage() {
             </div>
             <div className="pagebody__content">
                 {newproducts.map(product=><ProductCard key ={product.id} product={product}/>)}
+            </div>
+            <div className="paging">
+                <Pagination/>
             </div>
         </div>
                     <div className="bottom__slider">

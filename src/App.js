@@ -4,6 +4,7 @@ import Footer from './Component/Footer';
 import {Home,Checkout,Login,ProductsPage} from './Component'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import './assets/FontAwsomeIcons'
+import 'antd/dist/antd.css'
 
 function App() {
   return (
