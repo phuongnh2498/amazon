@@ -1,4 +1,6 @@
-
+.header *{
+    box-sizing: content-box !important;
+}
 .header{
     background-color: black;
     display:flex;

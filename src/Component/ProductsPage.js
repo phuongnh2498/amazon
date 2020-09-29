@@ -1,9 +1,8 @@
-import React,{useState,useEffect,useMemo} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import ProductCard from './ProductPage/ProductCard'
 import {products} from '../mockData'
-import {Pagination} from 'antd'
 import MiniSlider from './Slider__mini/Slider'
+import PaginationPosts from './ProductPage/ProductPagination'
 export default function ProductsPage() {
 
     const prod = [...products];
@@ -37,6 +36,7 @@ export default function ProductsPage() {
          setSort(e.target.value)
 
     }
+
     return (
         <>
         <div className="pagebody">
@@ -63,14 +63,9 @@ export default function ProductsPage() {
                 </div>      
                 </div>
             </div>
-            <div className="pagebody__content">
-                {newproducts.map(product=><ProductCard key ={product.id} product={product}/>)}
-            </div>
-            <div className="paging">
-                <Pagination/>
-            </div>
+            <PaginationPosts products = {newproducts}/>
         </div>
-                    <div className="bottom__slider">
+                <div className="bottom__slider">
             <MiniSlider categoryName="Other Items" cateValue="" categoryLink="#" data={products}/>
             </div>
             </>

@@ -40,6 +40,11 @@
             cursor: pointer;
             outline: none;
         }
+
+        transition:0.3s ease-out;
+    }
+    .backtotop:hover{
+        color: rgb(211, 201, 201);
     }
     .bottomLogo{
         border-top: 1px solid #3a4553;
