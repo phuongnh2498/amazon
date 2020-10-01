@@ -1,11 +1,16 @@
 import React,{useState,useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import {products} from '../mockData'
 import MiniSlider from './Slider__mini/Slider'
 import PaginationPosts from './ProductPage/ProductPagination'
 export default function ProductsPage() {
 
-    const prod = [...products];
+    let { cateValue } = useParams();
+
+    let prod = [...products];
+    
+    if(cateValue !== undefined)
+        prod = products.filter(x=>x.category === cateValue)
 
     const sortData = {
         lowtohigh:"lowtohigh",
@@ -23,18 +28,15 @@ export default function ProductsPage() {
         else if(sortValue===sortData.hightolow)
             setProducts(prod.sort((a,b)=>b.price-a.price))
         else
-         setProducts(prod)
+            setProducts(prod)
 
-        console.log(prod)
-    },[sortValue])
+    },[sortValue,cateValue])
 
     const category = products.map(item => item.category)
     .filter((value, index, self) => self.indexOf(value) === index)
 
      const handleSortBy = (e) => {
-
          setSort(e.target.value)
-
     }
 
     return (
@@ -58,7 +60,7 @@ export default function ProductsPage() {
                 <h3>Other category</h3>
                 <div className="leftsection__list">
                     <ul>
-                            {category.map((cat,index)=><li key={index}>{cat}</li>)}
+                            {category.map((cat,index)=><li key={index}><Link to={`/products/${cat}`}>{cat}</Link></li>)}
                     </ul>
                 </div>      
                 </div>

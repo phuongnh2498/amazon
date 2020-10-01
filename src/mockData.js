@@ -1,3 +1,8 @@
+export const sortData = {
+  lowtohigh:"lowtohigh",
+  hightolow:"hightolow",
+  featured:"featured",
+}
 export const categories = [
   {
     title: "AmazonBasics",
