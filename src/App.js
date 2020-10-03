@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Component/Header';
 import Footer from './Component/Footer';
-import {Home,Checkout,Login,ProductsPage} from './Component'
+import {Home,Checkout,Login,ProductsPage,EachProduct} from './Component'
 import {BrowserRouter as Router,Switch,Route } from 'react-router-dom'
 import './assets/FontAwsomeIcons'
 
@@ -14,6 +14,7 @@ function App() {
            <Route path="/products/:cateValue" component={ProductsPage}/>
            <Route path="/products" component={ProductsPage}/>
            <Route path="/checkout" component={Checkout}/>
+           <Route path="/product/:id" component={EachProduct}/>
            <Route path="/" component={Home}/>
         </Switch>
         <Footer/>
