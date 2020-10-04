@@ -1,3 +1,4 @@
+@import "./cart";
 .header *{
     box-sizing: content-box !important;
 }
@@ -56,6 +57,9 @@
 .header__link{
     color:white;
     text-decoration: none;
+    box-sizing: border-box;
+    margin: 1px;
+
 }
 .header__option{
     box-sizing: border-box;
@@ -81,7 +85,7 @@
 }
 .header__optionBasket{
     display: flex;
-    padding: 10px 20px 2px 20px;
+    padding: 15px 20px 2px 20px;
 }
 
 .header__basketIcon{
@@ -105,4 +109,23 @@
 }
 .header__optionLine2Cart{
     margin-top: 13px;
+}
+.back__btn{
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding-left: 50px;
+    & button{
+        padding: 13px 40px;
+        display: flex;
+        border: none;
+        background-color: transparent;
+        border-radius: 1rem;
+        color: rgb(240, 158, 99);
+        outline: none;
+        transition: .2s ease-out;
+        &:hover{
+            background-color: rgb(243, 181, 66);
+            color: black;
+        }
+    }
 }

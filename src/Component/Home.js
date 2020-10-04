@@ -39,14 +39,14 @@ export default function Home() {
                 {categories.map((item,index)=><CategoryCard key={index} categoryTitle={item.title} categoryImg={item.img} categoryLink={item.link}/>)}
             </div>
             <div className="home__content"> 
-                    <MiniSlider categoryName="Discover Amazon" cateValue="discoverObject" categoryLink="#" data={discoverObject}/>
-                    <MiniSlider categoryName="Electronics Products" cateValue="electronics" categoryLink="#" data={products}/>
-                    <MiniSlider categoryName="Jewelery Products" cateValue="jewelery" categoryLink="#" data={products}/>
-                    <MiniSlider categoryName="Men Clothing" cateValue="men clothing" categoryLink="#" data={products}/>
-                    <MiniSlider categoryName="Women Clothing" cateValue="women clothing" categoryLink="#" data={products}/>
+                    <MiniSlider categoryName="Discover Amazon" cateValue="discoverObject" categoryLink="/products" data={discoverObject}/>
+                    <MiniSlider categoryName="Electronics Products" cateValue="electronics" categoryLink="/products" data={products}/>
+                    <MiniSlider categoryName="Jewelery Products" cateValue="jewelery" categoryLink="/products" data={products}/>
+                    <MiniSlider categoryName="Men Clothing" cateValue="men clothing" categoryLink="/products" data={products}/>
+                    <MiniSlider categoryName="Women Clothing" cateValue="women clothing" categoryLink="/products" data={products}/>
             </div>
             <div className="bottom__slide">
-                <MiniSlider categoryName="Best sellers in Kindle eBooks" categoryLink="#" data={products}/>
+                <MiniSlider categoryName="Best sellers in Kindle eBooks" categoryLink="/products" data={products}/>
             </div>
         </div>
     )

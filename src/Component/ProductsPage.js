@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom'
 import {products} from '../mockData'
 import MiniSlider from './Slider__mini/Slider'
 import PaginationPosts from './ProductPage/ProductPagination'
+import BackBtn from './BackBtn'
 export default function ProductsPage() {
 
     let { cateValue } = useParams();
@@ -41,6 +42,8 @@ export default function ProductsPage() {
 
     return (
         <>
+        <BackBtn/>
+        
         <div className="pagebody">
                 <h1 className="pagebody__top">
                     <div className="top__container">
@@ -67,8 +70,8 @@ export default function ProductsPage() {
             </div>
             <PaginationPosts products = {newproducts}/>
         </div>
-                <div className="bottom__slider">
-            <MiniSlider categoryName="Other Items" cateValue="" categoryLink="#" data={products}/>
+            <div className="bottom__slider">
+                 <MiniSlider categoryName="Other Items" cateValue="" categoryLink="#" data={products}/>
             </div>
             </>
     )

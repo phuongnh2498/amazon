@@ -1,8 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
+import Cart from './Cart'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 export default function Header() {
+    const [isOpenCart,setOpenCart] = useState(true);
+
+
     return (
         <div className="header">
             <Link to="/">
@@ -28,13 +32,18 @@ export default function Header() {
                         <span className="header__optionLine2">& Orders</span>
                     </div>
                 </Link>
-                <Link to="/checkout" className="header__link">
-                    <div className="header_option header__optionBasket">
-                        <ShoppingCartIcon className="header__basketIcon"/>
-                        <span className="header__optionLine2 header__optionLine2Cart ">Cart</span>
-                        <span className="header__basketCount">0</span>
-                    </div>
-                </Link>
+                <div className="header__link header__cart">
+                        <div className="header_option header__optionBasket" onClick={()=>setOpenCart(prev=>{
+                            let last = prev;
+                            return !last;
+                        })}>
+                            <ShoppingCartIcon className="header__basketIcon"/>
+                            <span className="header__optionLine2 header__optionLine2Cart ">Cart</span>
+                            <span className="header__basketCount">0</span>
+                        </div>
+                    <Cart isOpenCart={isOpenCart}/>
+                </div>
+
             </div>
         </div>
     )
