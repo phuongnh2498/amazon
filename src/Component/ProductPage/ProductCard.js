@@ -8,7 +8,7 @@ export default function ProductCard({product}) {
                     <div className="card__img">
                        <img src={product.image} alt={product.description}/>
                     </div>
-                    <Link to={`product/${product.id}`}>{product.title}</Link>
+                    <Link to={`../product/${product.id}`}>{product.title}</Link>
                     <div className="card__bot">
                         <span className="card__price">${product.price}</span>
                         <button className="btn__add" type="primary" onClick  ={handleAdd}>Add</button>

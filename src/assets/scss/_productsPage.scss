@@ -1,10 +1,11 @@
 .pagebody{
-    padding-top: 40px;
+    padding-top: 30px;
     max-width: 1500px;
     margin: 0 auto;
     width: 100%;
 
     & .pagebody__top{
+        margin-bottom: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
