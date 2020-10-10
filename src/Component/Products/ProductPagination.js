@@ -19,7 +19,9 @@ export default function ProductPagination({products}) {
     return (
         <>
           <div className="pagebody__content">
-                {PaginationPosts.map(product=><ProductCard key ={product.id} product={product}/>)}
+                {PaginationPosts.map(product=><ProductCard 
+                key ={product.id} 
+                product={product}/>)}
             </div>
             <div className="paging">
                 <Pagination 

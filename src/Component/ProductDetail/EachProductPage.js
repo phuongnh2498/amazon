@@ -1,8 +1,8 @@
 import React,{useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import MiniSlider from './Slider__mini/Slider'
-import {products} from '../mockData'
-import BackBtn from './BackBtn'
+import MiniSlider from '../Common/Slider__mini/Slider'
+import {products} from '../../mockData'
+import BackBtn from '../Common/BackBtn'
 export default function EachProduct() {
     let {id} = useParams()
     let prods = [...products];

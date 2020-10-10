@@ -1,10 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom' 
+import { Link } from 'react-router-dom'
 export default function Footer() {
 
-    const scrollTop = () =>{
-        window.scrollTo({top: 0, behavior: 'smooth'});
-     };
+    const scrollTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
     return (
         <div className="footer">
             <div className="backtotop">
@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
             <div className="bottomLogo">
                 <Link to="/">
-                    <img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" alt=""/>
+                    <img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" alt="" />
                 </Link>
             </div>
         </div>

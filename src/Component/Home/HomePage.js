@@ -1,8 +1,8 @@
 import React from 'react'
-import Slider from './Slider/Slider'
-import MiniSlider from './Slider__mini/Slider'
-import CategoryCard from './Home/CategoryCard'
-import {categories,discoverObject,products} from '../mockData'
+import Slider from '../Common/Slider/Slider'
+import MiniSlider from '../Common/Slider__mini/Slider'
+import CategoryCard from './CategoryCard'
+import {categories,discoverObject,products} from '../../mockData'
 import { Link } from 'react-router-dom'
 
 export default function Home() {

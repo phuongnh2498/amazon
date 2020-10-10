@@ -1,6 +1,6 @@
-import Home from './Home'
-import Checkout from './Checkout'
+import Home from './Home/HomePage'
+import Checkout from './CheckOut/CheckoutPage'
 import Login from './Login'
-import ProductsPage from './ProductsPage'
-import EachProduct from './EachProduct'
+import ProductsPage from './Products/ProductsPage'
+import EachProduct from './ProductDetail/EachProductPage'
 export{Home,Checkout,Login,ProductsPage,EachProduct}

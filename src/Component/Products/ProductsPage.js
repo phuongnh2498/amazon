@@ -1,12 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import {products} from '../mockData'
-import MiniSlider from './Slider__mini/Slider'
-import PaginationPosts from './ProductPage/ProductPagination'
-import BackBtn from './BackBtn'
-export default function ProductsPage() {
+import MiniSlider from '../Common/Slider__mini/Slider'
+import PaginationPosts from './ProductPagination'
+import BackBtn from '../Common/BackBtn'
+import { useStateValue } from '../../context/StateProvider'
 
-    let { cateValue } = useParams();
+export default function ProductsPage() {
+    const {products} = useStateValue();
+
+    const { cateValue } = useParams();
 
     let prod = [...products];
     
@@ -18,19 +20,22 @@ export default function ProductsPage() {
         hightolow:"hightolow",
         featured:"featured",
     }
-    const [newproducts, setProducts] = useState(prod)
+    const [sortedProducts, setProducts] = useState(prod)
 
     const [sortValue, setSort] = useState("featured")
 
+
     useEffect(()=>{
-
-        if(sortValue===sortData.lowtohigh)
-            setProducts(prod.sort((a,b)=>a.price-b.price))
-        else if(sortValue===sortData.hightolow)
-            setProducts(prod.sort((a,b)=>b.price-a.price))
-        else
-            setProducts(prod)
-
+        const sortProducts = ()=>{
+            if(sortValue===sortData.lowtohigh)
+                setProducts(prod.sort((a,b)=>a.price-b.price))
+            else if(sortValue===sortData.hightolow)
+                setProducts(prod.sort((a,b)=>b.price-a.price))
+            else
+                setProducts(prod)
+        }
+        sortProducts()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[sortValue,cateValue])
 
     const category = products.map(item => item.category)
@@ -68,7 +73,7 @@ export default function ProductsPage() {
                 </div>      
                 </div>
             </div>
-            <PaginationPosts products = {newproducts}/>
+            <PaginationPosts products = {sortedProducts}/>
         </div>
             <div className="bottom__slider">
                  <MiniSlider categoryName="Other Items" cateValue="" categoryLink="#" data={products}/>

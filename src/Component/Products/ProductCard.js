@@ -1,8 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useStateValue } from '../../context/StateProvider'
+
 
 export default function ProductCard({product}) {
-    const handleAdd = ()=>{}
+    const {addToCart} = useStateValue()
+
+    const handleAdd = ()=>{
+        addToCart(product)
+    }
     return (
             <div className="pagebody__content__card">
                     <div className="card__img">
