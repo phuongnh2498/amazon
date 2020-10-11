@@ -1,88 +1,109 @@
-.productcart__container{
-    padding-top: 30px;
-    max-width: 1500px;
-    margin: 0 auto;
+.productcart__container {
+  padding-top: 30px;
+  max-width: 1500px;
+  margin: 0 auto;
+  height: 100%;
+  .title {
+    font-weight: 580;
+  }
+  .productcart__list {
+    padding: 20px;
     height: 100%;
-    .title{
-        font-weight: 580;
+  }
+  .productcart__listitem {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 2px solid rgb(221, 220, 220);
+    padding-bottom: 30px;
+    .productcart__title {
+      display: flex;
     }
-    .productcart__list{
-        padding: 20px;
-        height: 100%;
+    .productcart__image {
+      text-align: center;
+      max-height: 200px;
+      max-width: 200px;
+      img {
+        max-height: 100%;
+        max-width: 100%;
+      }
     }
-    .productcart__listitem{
-        list-style: none;
-        display: flex;
-        justify-content: space-around;
-        margin: 10px;
-        padding: 5px;
-        border-bottom: 2px solid rgb(221, 220, 220);
-        padding-bottom: 30px;
-        .productcart__title{
-            display: flex;            
-        }
-        .productcart__image{
-            text-align: center;
-            max-height: 200px;
-            max-width: 200px;
-            img{
-                max-height: 100%;
-                max-width: 100%;
-            }
-        }
-        .productcart__name, .productcart__quantity, .productcart__price, .productcart__button{
-            align-self: center;
-            font-family: $name-font;
-            font-weight: 550;
-        }
-        .productcart__button{
-            button{
-                border: none;
-                background-color: transparent;
-                padding: 5px 10px;
-                font-size: large;
-                cursor: pointer;
-                &:hover{
-                    color: $main-color;
-                }
-            }
-        }
-        .productcart__name{
-            font-weight: 600;
-        }
-        .productcart__quantity{
-            align-self: center;
-            button{
-                border: none;
-                background-color: transparent;
-                color: rgb(95, 93, 93);
-                cursor: pointer;
-                padding: 18px;
-                &:hover{
-                    color: rgb(207, 155, 58);
-                }
-            }
-            input{
-                font-size: 13px;
-                outline: none;
-                width: 34px;
-                text-align: center;
-                border: 1px solid rgb(153, 148, 148);
-            }
-        }
+    .productcart__name,
+    .productcart__quantity,
+    .productcart__price,
+    .productcart__button {
+      align-self: center;
+      font-family: $name-font;
+      font-weight: 550;
     }
-    .productcart__bottom{
-        min-height: 200px;
-        .text{
-            float: right;
-            margin-right: 50px;
-            color: rgb(105, 100, 100);
-            font-size: 0.9rem;
+    .productcart__button {
+      button {
+        border: none;
+        background-color: transparent;
+        padding: 5px 10px;
+        font-size: large;
+        cursor: pointer;
+        &:hover {
+          color: $main-color;
         }
-        .money{
-            font-size: 2rem;
-            font-weight: bold;
-            color: rgb(14, 12, 12);
-        }
+      }
     }
+    .productcart__name {
+      font-weight: 600;
+    }
+    .productcart__quantity {
+      align-self: center;
+      button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: rgb(95, 93, 93);
+        cursor: pointer;
+        padding: 18px;
+        &:hover {
+          color: rgb(207, 155, 58);
+        }
+      }
+      input {
+        font-size: 13px;
+        outline: none;
+        width: 34px;
+        text-align: center;
+        border: 1px solid rgb(153, 148, 148);
+      }
+    }
+  }
+  .productcart__bottom {
+    min-height: 200px;
+    .text {
+      float: right;
+      margin-right: 50px;
+      color: rgb(105, 100, 100);
+      font-size: 0.9rem;
+    }
+    .money {
+      font-size: 2rem;
+      font-weight: bold;
+      color: rgb(14, 12, 12);
+    }
+    .non__item {
+      text-align: center;
+      color: rgb(112, 95, 95);
+    }
+  }
+}
+.plug__bottom {
+  height: 10vh;
+  text-align: center;
+  border-top: 1px solid rgb(0, 0, 0);
+  box-shadow: 3px 3px 5px 6px #ccc;
+  padding-top: 40px;
+  background-color: rgb(177, 172, 172);
+  h4 {
+    align-self: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
 }

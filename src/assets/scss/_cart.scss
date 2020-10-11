@@ -1,23 +1,20 @@
-
-
-
 .lighter-text {
-  color: #ABB0BE;
+  color: #242121;
 }
 
 .main-color-text {
-  color: $main-color;
+  color: #242121;
 }
 
 nav {
   padding: 20px 0 40px 0;
-  background: #F8F8F8;
+  background: #f8f8f8;
   font-size: 16px;
-  
+
   .navbar-left {
     float: left;
   }
-  
+
   .navbar-right {
     float: right;
   }
@@ -29,7 +26,7 @@ nav {
       a {
         color: #777777;
         text-decoration: none;
-        
+
         &:hover {
           color: black;
         }
@@ -37,30 +34,42 @@ nav {
     }
   }
 }
-.header__cart{
-    a{
-        color: white;
-    }
+.header__cart {
+  a {
+    color: white;
+  }
 }
 
-@keyframes fadein{
-    0% { opacity:0; }
-    66% { opacity:0.5; }
-    100% { opacity:1; }
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@keyframes fadeout{
-    0% { opacity:1; }
-    66% { opacity:0.5; }
-    100% { opacity:0; }
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
 }
-.fade__in{
+.fade__in {
   display: block !important;
-    opacity: 1 !important;
-    animation: fadein 0.2s ease-in !important;
+  opacity: 1 !important;
+  animation: fadein 0.1s ease-in !important;
 }
 
 .container {
-display: none;
+  display: none;
   opacity: 0;
   margin: auto;
   color: black;
@@ -68,82 +77,140 @@ display: none;
   right: 10px;
 }
 
-
 .badge {
-    background-color: #6394F8;
-    border-radius: 10px;
-    color: white;
-    display: inline-block;
-    font-size: 12px;
-    line-height: 1;
-    padding: 3px 7px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
+  background-color: #6394f8;
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
 .shopping-cart {
-  margin: 20px 0;
+  border: 1px solid rgb(192, 176, 176);
+  margin: 19px 0;
   float: right;
   background: white;
   width: 320px;
-  position: relative;
   border-radius: 3px;
   padding: 20px;
-  
-  
+  max-height: 360px;
+  overflow-y: auto;
   .shopping-cart-header {
-    border-bottom: 1px solid #E8E8E8;
-    padding-bottom: 15px;
-    
+    border: 1px solid rgb(192, 176, 176);
+    margin-top: -38px;
+    margin-left: -21px;
+    padding: 15px 15px 5px 15px;
+    background-color: rgba(254, 189, 105, 1);
+    position: absolute;
+    width: 331px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 4px 2px -2px gray;
+
+    .header__leftbasket {
+      float: left;
+      display: inline;
+
+      .basket__checkout {
+        display: flex;
+        padding: 3px 10px 3px 3px;
+        background-color: rgba(49, 54, 48, 0.5);
+        border-radius: 2rem;
+        transition: 0.2s ease-out;
+        .header__basketIcon {
+          height: 20px !important;
+          padding-right: 2px !important;
+        }
+
+        span {
+          box-sizing: border-box !important;
+          padding-top: 5px;
+          display: flex;
+        }
+        &:hover {
+          background-color: rgba(39, 34, 34, 0.8);
+          color: rgb(253, 182, 49);
+        }
+      }
+    }
     .shopping-cart-total {
       float: right;
     }
   }
-  
-  .shopping-cart-items {
-    
-    padding-top: 20px;
 
-      li {
-        margin-bottom: 18px;
-      }
+  .shopping-cart-items {
+    box-sizing: border-box !important;
+    margin-top: 50px;
+    li {
+      padding-bottom: 13px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgb(201, 197, 197);
+    }
 
     img {
       float: left;
       margin-right: 12px;
     }
-    
+
     .item-name {
       display: block;
       padding-top: 10px;
-      font-size: 16px;
+      font-size: 13px;
+      font: 1em sans-serif;
     }
-    
+
     .item-price {
       color: $main-color;
       margin-right: 8px;
     }
-    
+
     .item-quantity {
+      .input {
+        margin-left: 5px;
+      }
       color: $light-text;
+      .plus {
+        color: rgb(185, 231, 117);
+      }
+      .minus {
+        color: rgb(145, 68, 68);
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+      }
+      input {
+        width: 30px;
+        outline: none;
+        border: 1px solid rgb(197, 193, 193);
+        font-weight: 600;
+        margin: 0 5px;
+        font-size: 12px;
+        text-align: center;
+      }
     }
   }
-   
 }
 
 .shopping-cart:after {
-	bottom: 100%;
-	left: 89%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-bottom-color: white;
-	border-width: 8px;
-	margin-left: -8px;
+  bottom: 100%;
+  left: 89%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: white;
+  border-width: 8px;
+  margin-left: -8px;
 }
 
 .cart-icon {
@@ -153,24 +220,24 @@ display: none;
   float: left;
 }
 
-.button {
-  background: $main-color;
-  color:white;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  display: block;
-  border-radius: 3px;
-  font-size: 16px;
-  margin: 25px 0 15px 0;
-  
-  &:hover {
-    background: lighten($main-color, 3%);
+.clearfix {
+  .item-title {
+    width: 100%;
+    color: black;
   }
-}
-.clearfix{
- list-style: none;
-
+  list-style: none;
+  img {
+    max-width: 50px;
+    max-height: 40px;
+  }
+  .item-remove {
+    float: right;
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
 }
 .clearfix:after {
   content: "";
