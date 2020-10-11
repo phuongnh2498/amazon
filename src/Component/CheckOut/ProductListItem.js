@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProductListItem({
@@ -33,7 +34,9 @@ export default function ProductListItem({
         <li className="productcart__listitem">
             <div className="productcart__title">
                 <div className="productcart__image">
-                    <img src={product.image} alt="" />
+                    <Link to={`../product/${product.id}`}>
+                        <img src={product.image} alt="" />
+                    </Link>
                 </div>
                 <span className="productcart__name">{product.name}</span>
             </div>

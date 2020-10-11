@@ -1,12 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
 import BackBtn from "../Common/BackBtn";
 import { useStateValue } from "../../context/StateProvider";
 import ProductListItem from "./ProductListItem";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCat } from "@fortawesome/free-solid-svg-icons";
 export default function CheckOut() {
   const { cart, removeFromCart, updateCart, cartTotal } = useStateValue();
   let total = cartTotal(cart);
   total = total.toLocaleString("en-US", { maximumFractionDigits: 2 });
+  useEffect(()=>{
+    const scrollTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+    scrollTop()
+  },[])
+
   return (
     <>
       <BackBtn />
@@ -31,10 +39,13 @@ export default function CheckOut() {
                 SubTotal: <span className="money">${total}</span>
               </span>
             ) : (
-              <span className="text">You don't have any item in your cart</span>
+              <h3 className="non__item">You don't have any item in your cart</h3>
             )}
           </div>
         </div>
+        <div className="plug__bottom">
+              <h4>My github: <a href="https://github.com/boyhp0079">@HP<FontAwesomeIcon icon={faCat}/></a></h4>
+      </div>
       </div>
     </>
   );

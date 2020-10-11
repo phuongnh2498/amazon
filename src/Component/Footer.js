@@ -14,27 +14,28 @@ export default function Footer() {
                 <div className="footer__col">
                     <h3 className="col__head">Get to know us</h3>
                     <ul>
-                        <li>Hellow</li>
-                        <li>This is fake</li>
-                        <li>ye</li>
+                        <li>Thank</li>
+                        <li>For</li>
+                        <li>Visiting</li>
                     </ul>
                 </div>
                 <div className="footer__col">
                     <h3 className="col__head">Make Money with Us</h3>
                     <ul>
-                        <li>Hellow</li>
-                        <li>This is fake</li>
-                        <li>ye</li>
+                        <li>This</li>
+                        <li>Is</li>
+                        <li>SomeThing</li>
                     </ul>
                 </div>
                 <div className="footer__col">
-                    <h3 className="col__head">This is fine</h3>
+                    <h3 className="col__head">All Right Reversed</h3>
                     <ul>
-                        <li>Hellow</li>
-                        <li>This is fake</li>
-                        <li>ye</li>
+                        <li>All</li>
+                        <li>Right</li>
+                        <li>Reversed</li>
                     </ul>
                 </div>
+
             </div>
             <div className="bottomLogo">
                 <Link to="/">

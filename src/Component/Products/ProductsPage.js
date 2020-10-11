@@ -1,55 +1,55 @@
-import React,{useState,useEffect} from 'react'
-import {Link, useParams} from 'react-router-dom'
+import React, { useState, useEffect, useMemo } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import MiniSlider from '../Common/Slider__mini/Slider'
 import PaginationPosts from './ProductPagination'
 import BackBtn from '../Common/BackBtn'
 import { useStateValue } from '../../context/StateProvider'
 
 export default function ProductsPage() {
-    const {products} = useStateValue();
+    const { products } = useStateValue();
 
     const { cateValue } = useParams();
 
     let prod = [...products];
-    
-    if(cateValue !== undefined)
-        prod = products.filter(x=>x.category === cateValue)
+
+    if (cateValue !== undefined)
+        prod = products.filter(x => x.category === cateValue)
 
     const sortData = {
-        lowtohigh:"lowtohigh",
-        hightolow:"hightolow",
-        featured:"featured",
+        lowtohigh: "LOW_TO_HIGH",
+        hightolow: "HIGH_TO_LOW",
+        featured: "FEATURED",
     }
     const [sortedProducts, setProducts] = useState(prod)
 
-    const [sortValue, setSort] = useState("featured")
+    const [sortValue, setSort] = useState(sortData.featured)
 
 
-    useEffect(()=>{
-        const sortProducts = ()=>{
-            if(sortValue===sortData.lowtohigh)
-                setProducts(prod.sort((a,b)=>a.price-b.price))
-            else if(sortValue===sortData.hightolow)
-                setProducts(prod.sort((a,b)=>b.price-a.price))
+    useEffect(() => {
+        const sortProducts = () => {
+            if (sortValue === sortData.lowtohigh)
+                setProducts(prod.sort((a, b) => a.price - b.price))
+            else if (sortValue === sortData.hightolow)
+                setProducts(prod.sort((a, b) => b.price - a.price))
             else
                 setProducts(prod)
         }
         sortProducts()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[sortValue,cateValue])
+    }, [sortValue, cateValue])
 
     const category = products.map(item => item.category)
-    .filter((value, index, self) => self.indexOf(value) === index)
+        .filter((value, index, self) => self.indexOf(value) === index)
 
-     const handleSortBy = (e) => {
-         setSort(e.target.value)
+    const handleSortBy = (e) => {
+        setSort(e.target.value)
     }
 
     return (
         <>
-        <BackBtn/>
-        
-        <div className="pagebody">
+            <BackBtn />
+
+            <div className="pagebody">
                 <h1 className="pagebody__top">
                     <div className="top__container">
                         <span className="top__resultText">Over 60,000 results for <b>Dog Toys</b></span>
@@ -63,21 +63,25 @@ export default function ProductsPage() {
                         </div>
                     </div>
                 </h1>
-            <div className="leftsection">
-                <div className="leftsection__category">
-                <h3>Other category</h3>
-                <div className="leftsection__list">
-                    <ul>
-                            {category.map((cat,index)=><li key={index}><Link to={`/products/${cat}`}>{cat}</Link></li>)}
-                    </ul>
-                </div>      
+                <div className="leftsection">
+                    <div className="leftsection__category">
+                        <h3>Other category</h3>
+                        <div className="leftsection__list">
+                            <ul>
+                                {category.map((cat, index) => <li key={index}><Link to={`/products/${cat}`}>{cat}</Link></li>)}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <PaginationPosts products={sortedProducts} />
             </div>
-            <PaginationPosts products = {sortedProducts}/>
-        </div>
             <div className="bottom__slider">
-                 <MiniSlider categoryName="Other Items" cateValue="" categoryLink="#" data={products}/>
+                {
+                    useMemo(() =>
+                        <MiniSlider categoryName="Other Items" cateValue="" categoryLink="#" data={products} />
+                        , [products])
+                }
             </div>
-            </>
+        </>
     )
 }

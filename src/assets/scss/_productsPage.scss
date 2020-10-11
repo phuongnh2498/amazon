@@ -113,15 +113,16 @@
 }
 .btn__add {
   padding: 5px 40px;
-  border: 1px solid #477dca;
+  border: 1px solid #fbbe4f;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 530;
   background-color: transparent;
   color: rgb(24, 21, 21);
   transition: 0.3s ease-out;
-  & :hover {
-    background-color: #90b7ee !important;
+  cursor: pointer;
+  &:hover {
+    background-color: #fdc45a !important;
   }
 }
 .bottom__slider {
