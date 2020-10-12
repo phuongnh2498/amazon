@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import Cart from './Common/Cart'
@@ -6,8 +6,10 @@ import { useStateValue } from '../context/StateProvider'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 export default function Header() {
     const [isOpenCart, setOpenCart] = useState(true);
-    const { cart } = useStateValue();
+    const [searchInput, setSearchInput] = useState();
 
+    const { cart, cartTotal } = useStateValue();
+    const handleChange = e => { setSearchInput(e.target.value) }
     return (
         <div className="header">
             <Link to="/">
@@ -17,7 +19,7 @@ export default function Header() {
                 />
             </Link>
             <div className="header__search">
-                <input type="text" className="header__searchInput" />
+                <input type="text" className="header__searchInput" value={searchInput} onChange={handleChange} />
                 <SearchIcon className="header__searchIcon" />
             </div>
             <div className="header__nav">
@@ -42,7 +44,8 @@ export default function Header() {
                         <span className="header__optionLine2 header__optionLine2Cart ">Cart</span>
                         <span className="header__basketCount">{cart.length}</span>
                     </div>
-                    <Cart isOpenCart={isOpenCart} />
+                    {useMemo(() => <Cart isOpenCart={isOpenCart} cartTotal={cartTotal} cart={cart} />, [cartTotal, isOpenCart, cartTotal])}
+
                 </div>
 
             </div>

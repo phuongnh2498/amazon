@@ -1,30 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
-const CartItem = ({ product, removeFromCart, updateCart }) => {
+const CartItem = ({ product, handleInput, handleAddMinus, handleRemove, quantity }) => {
 
-    const [quantity, setQuantity] = useState(product.quantity);
-    useEffect(() => {
-        updateCart(product.id, quantity);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [quantity]);
 
-    const handleRemove = () => {
-        removeFromCart(product.id);
-    };
-
-    const handleInput = (e) => {
-        const value = e.target.value;
-        if (value > 0)
-            setQuantity(value);
-    };
-
-    const handleAddMinus = (type) => {
-        if (type === "+") setQuantity((prev) => prev + 1);
-        else {
-            if (quantity > 1) setQuantity((prev) => prev - 1);
-        }
-    };
     return (
         <li className="clearfix">
             <Link to={`../product/${product.id}`} className="item-title">
