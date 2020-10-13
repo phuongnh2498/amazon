@@ -1,13 +1,25 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useMemo } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
+
 import Cart from './Common/Cart'
 import { useStateValue } from '../context/StateProvider'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-export default function Header() {
+const Header = ({ history }) => {
     const [isOpenCart, setOpenCart] = useState(true);
+    const [searchInput, setSearchInput] = useState("");
     const { cart } = useStateValue();
+    const handleChange = e => {
+        console.log(e.target.value)
+        setSearchInput(e.target.value)
+    }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        if (!searchInput) return;
+        history.push(`/products/search/${searchInput}`)
+    }
     return (
         <div className="header">
             <Link to="/">
@@ -16,10 +28,15 @@ export default function Header() {
                     alt=""
                 />
             </Link>
-            <div className="header__search">
-                <input type="text" className="header__searchInput" />
-                <SearchIcon className="header__searchIcon" />
-            </div>
+            <form className="header__search" onSubmit={handleSubmit}>
+                <input type="text" className="header__searchInput"
+                    value={searchInput}
+                    onChange={handleChange}
+                />
+                <Button type="submit" className="header__searchButton">
+                    <SearchIcon className="header__searchIcon" onClick={handleSubmit} />
+                </Button>
+            </form>
             <div className="header__nav">
                 <Link to="/login" className="header__link">
                     <div className="header__option">
@@ -42,10 +59,12 @@ export default function Header() {
                         <span className="header__optionLine2 header__optionLine2Cart ">Cart</span>
                         <span className="header__basketCount">{cart.length}</span>
                     </div>
-                    <Cart isOpenCart={isOpenCart} />
+                    {useMemo(() => <Cart isOpenCart={isOpenCart} cart={cart} />, [isOpenCart, cart])}
+
                 </div>
 
             </div>
         </div>
     )
 }
+export default withRouter(Header)

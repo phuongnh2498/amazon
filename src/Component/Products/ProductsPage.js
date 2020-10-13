@@ -8,13 +8,19 @@ import { useStateValue } from '../../context/StateProvider'
 export default function ProductsPage() {
     const { products } = useStateValue();
 
-    const { cateValue } = useParams();
+    const { cateValue, searchvalue } = useParams();
 
     let prod = [...products];
 
-    if (cateValue !== undefined)
+    if (cateValue)
         prod = products.filter(x => x.category === cateValue)
-
+    else if (searchvalue)
+        prod = products.filter(x => {
+            let searchlower = searchvalue.toLowerCase();
+            const lowertitle = x.title.toLowerCase();
+            const catlow = x.category.toLowerCase();
+            return (lowertitle.includes(searchlower) || catlow.includes(searchlower))
+        })
     const sortData = {
         lowtohigh: "LOW_TO_HIGH",
         hightolow: "HIGH_TO_LOW",
@@ -36,7 +42,7 @@ export default function ProductsPage() {
         }
         sortProducts()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [sortValue, cateValue])
+    }, [sortValue, cateValue, searchvalue])
 
     const category = products.map(item => item.category)
         .filter((value, index, self) => self.indexOf(value) === index)

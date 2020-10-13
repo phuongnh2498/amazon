@@ -1,12 +1,17 @@
 import React from "react";
-import { useStateValue } from "../../context/StateProvider";
+import { getCartTotal } from '../../context/reducer'
+import { useStateValue } from '../../context/StateProvider'
+
 import { Link } from 'react-router-dom'
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartProduct from './CartProduct'
-export default function Cart({ isOpenCart }) {
-  const { cart, cartTotal, removeFromCart, updateCart } = useStateValue()
+import WithCartManager from '../hoc/WithCartManager'
 
-  let total = cartTotal(cart);
+export default function Cart({ isOpenCart }) {
+  const { cart } = useStateValue();
+  console.log(cart)
+
+  let total = getCartTotal(cart);
   total = total.toLocaleString('en-US', { maximumFractionDigits: 2 })
   return (
     <div className={isOpenCart ? "container" : "container fade__in"}>
@@ -27,12 +32,12 @@ export default function Cart({ isOpenCart }) {
           </div>
         </div>
         <ul className="shopping-cart-items">
-          {cart.length > 0 ? cart.map(product => <CartProduct
-            key={product.id}
-            product={product}
-            removeFromCart={removeFromCart}
-            updateCart={updateCart}
-          />) : <h3>No cart product yet!</h3>}
+          {
+            cart.length > 0 ? cart.map(product => {
+              const TempComponent = WithCartManager(CartProduct);
+              return <TempComponent key={product.id} product={product} />
+            }
+            ) : <h3>No cart product yet!</h3>}
         </ul>
       </div>
     </div>

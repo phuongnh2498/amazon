@@ -51,6 +51,7 @@ const updateCart = (productId, quantity, stateValue) => {
     return { ...stateValue, cart: updatedCart }
 }
 const reducer = (state, action) => {
+    console.log(action.type)
     switch (action.type) {
         case 'ADD_TO_CART':
             return addToCart(action.product, state)
