@@ -1,35 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function ProductListItem({
-    product,
-    removeFromCart,
-    updateCart,
-}) {
-    const [quantity, setQuantity] = useState(product.quantity);
+export default function ProductListItem({ product, handleRemove, handleInput, handleAddMinus }) {
 
-    useEffect(() => {
-        updateCart(product.id, quantity);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [quantity]);
 
-    const handleRemove = () => {
-        removeFromCart(product.id);
-    };
-
-    const handleInput = (e) => {
-        const value = e.target.value;
-        if (value > 0)
-            setQuantity(value);
-    };
-
-    const handleAddMinus = (type) => {
-        if (type === "+") setQuantity((prev) => prev + 1);
-        else {
-            if (quantity > 1) setQuantity((prev) => prev - 1);
-        }
-    };
     return (
         <li className="productcart__listitem">
             <div className="productcart__title">
@@ -45,7 +20,7 @@ export default function ProductListItem({
                 <button onClick={() => handleAddMinus("+")}>
                     <FontAwesomeIcon icon="plus" />
                 </button>
-                <input value={quantity} type="number" onChange={handleInput} />
+                <input value={product.quantity} type="number" onChange={handleInput} />
                 <button onClick={() => handleAddMinus("-")}>
                     <FontAwesomeIcon icon="minus" />
                 </button>

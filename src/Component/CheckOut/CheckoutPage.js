@@ -1,13 +1,19 @@
 import React,{useEffect} from "react";
 import BackBtn from "../Common/BackBtn";
 import { useStateValue } from "../../context/StateProvider";
+import { getCartTotal } from "../../context/reducer";
+import WithCartManager from '../hoc/WithCartManager'
 import ProductListItem from "./ProductListItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCat } from "@fortawesome/free-solid-svg-icons";
+
+
+
 export default function CheckOut() {
-  const { cart, removeFromCart, updateCart, cartTotal } = useStateValue();
-  let total = cartTotal(cart);
+  const { cart } = useStateValue();
+  let total = getCartTotal(cart);
   total = total.toLocaleString("en-US", { maximumFractionDigits: 2 });
+
   useEffect(()=>{
     const scrollTop = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -23,14 +29,10 @@ export default function CheckOut() {
           <h2 className="title">Shoping Cart</h2>
           <div className="productcart__list">
             <ul>
-              {cart.map((product) => (
-                <ProductListItem
-                  key={product.id}
-                  product={product}
-                  removeFromCart={removeFromCart}
-                  updateCart={updateCart}
-                />
-              ))}
+              {cart.map(product => {
+              const TempComponent = WithCartManager(ProductListItem);
+              return <TempComponent key={product.id} product={product} />}
+            )}
             </ul>
           </div>
           <div className="productcart__bottom">

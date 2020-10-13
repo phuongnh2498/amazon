@@ -1,12 +1,17 @@
 import React from "react";
-import { useStateValue } from "../../context/StateProvider";
+import { getCartTotal } from '../../context/reducer'
+import { useStateValue } from '../../context/StateProvider'
+
 import { Link } from 'react-router-dom'
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartProduct from './CartProduct'
-import WithCartManager from './hoc/WithCartManager'
-export default function Cart({ isOpenCart, cartTotal, cart }) {
+import WithCartManager from '../hoc/WithCartManager'
+
+export default function Cart({ isOpenCart }) {
+  const { cart } = useStateValue();
   console.log(cart)
-  let total = cartTotal(cart);
+
+  let total = getCartTotal(cart);
   total = total.toLocaleString('en-US', { maximumFractionDigits: 2 })
   return (
     <div className={isOpenCart ? "container" : "container fade__in"}>

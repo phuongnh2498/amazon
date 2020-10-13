@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { products } from '../mockData'
-import reducer, { getCartTotal } from './reducer'
+import reducer from './reducer'
 
 export const StateContext = createContext()
 
@@ -24,7 +24,6 @@ export const StateProvider = ({ children }) => {
     const updateCart = (productId, quantity) => {
         dispatch({ type: "UPDATE_CART", productId: productId, quantity: quantity })
     }
-    const cartTotal = cart => getCartTotal(cart);
     return (
         <StateContext.Provider value={
             {
@@ -33,7 +32,6 @@ export const StateProvider = ({ children }) => {
                 addToCart: addToCart,
                 removeFromCart: removeFromCart,
                 updateCart: updateCart,
-                cartTotal: cartTotal,
             }
         }>
             {children}
