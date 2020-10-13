@@ -58,7 +58,7 @@ export default function ProductsPage() {
             <div className="pagebody">
                 <h1 className="pagebody__top">
                     <div className="top__container">
-                        <span className="top__resultText">Over 60,000 results for <b>Dog Toys</b></span>
+                        <span className="top__resultText">Over {prod.length} results {searchvalue && "for"}  <b>{searchvalue && `${searchvalue}`}</b></span>
                         <div className="top__sortby">
                             <span className="top__sortbytext">Sort by </span>
                             <select value={sortValue} onChange={handleSortBy} className="top__sortby__selection">
