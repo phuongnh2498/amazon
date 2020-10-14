@@ -9,7 +9,6 @@ import WithCartManager from '../hoc/WithCartManager'
 
 export default function Cart({ isOpenCart }) {
   const { cart } = useStateValue();
-  console.log(cart)
 
   let total = getCartTotal(cart);
   total = total.toLocaleString('en-US', { maximumFractionDigits: 2 })

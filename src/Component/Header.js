@@ -11,7 +11,6 @@ const Header = ({ history }) => {
     const [searchInput, setSearchInput] = useState("");
     const { cart } = useStateValue();
     const handleChange = e => {
-        console.log(e.target.value)
         setSearchInput(e.target.value)
     }
 
