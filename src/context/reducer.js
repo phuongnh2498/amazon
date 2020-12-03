@@ -35,10 +35,9 @@ const addToCart = (product, stateValue) => {
 const removeFromCart = (productId, stateValue) => {
 
     let updatedCart = [...stateValue.cart]
-    let NotiText = `Removed! 🗑🗑🗑  ${updatedCart[productId]?.title} `;
+    let NotiText = `Removed! 🗑🗑🗑  ${updatedCart.find(x => x.id = productId)?.title} `;
     updatedCart = updatedCart.filter(x => x.id !== parseInt(productId))
     addNotify(NotiText, productId)
-
     return { ...stateValue, cart: updatedCart }
 }
 const updateCart = (productId, quantity, stateValue) => {
@@ -50,7 +49,13 @@ const updateCart = (productId, quantity, stateValue) => {
 
     return { ...stateValue, cart: updatedCart }
 }
-const reducer = (state, action) => {
+
+const initialState = {
+    cart: [],
+    user: null
+}
+
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_TO_CART':
             return addToCart(action.product, state)

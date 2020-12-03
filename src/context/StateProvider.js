@@ -11,7 +11,7 @@ export const initialState = {
 
 export const StateProvider = ({ children }) => {
 
-    const [stateValue, dispatch] = useReducer(reducer, initialState)
+    const [stateValue, dispatch] = useReducer(reducer)
 
     const addToCart = product => {
         dispatch({ type: "ADD_TO_CART", product: product })
