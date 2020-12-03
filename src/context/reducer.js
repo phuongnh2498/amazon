@@ -50,12 +50,12 @@ const updateCart = (productId, quantity, stateValue) => {
     return { ...stateValue, cart: updatedCart }
 }
 
-const initialState = {
+export const initialState = {
     cart: [],
     user: null
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TO_CART':
             return addToCart(action.product, state)

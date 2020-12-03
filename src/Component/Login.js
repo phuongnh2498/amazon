@@ -12,6 +12,13 @@ export default function Login() {
         const newinput = e.target.value
         setInput({ ...input, [e.target.name]: newinput })
     }
+
+    const HandleSubmit = (e) => {
+        e.preventDefault();
+    }
+    const register = e => {
+        e.preventDefault();
+    }
     return (
         <>
             <BackBtn />
@@ -32,7 +39,10 @@ export default function Login() {
                         <input id="password" name="password" type="password" onChange={HandleText} value={input.password} />
                     </div>
                     <div className="input__block sign__in">
-                        <button>Sign-in</button>
+                        <button onClick={HandleSubmit}>Sign-in</button>
+                    </div>
+                    <div className="input__block register">
+                        <button onClick={HandleSubmit}>Create your amazon account</button>
                     </div>
                 </div>
             </div>

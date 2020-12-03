@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useRef } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
@@ -8,16 +8,13 @@ import { useStateValue } from '../context/StateProvider'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 const Header = ({ history }) => {
     const [isOpenCart, setOpenCart] = useState(true);
-    const [searchInput, setSearchInput] = useState("");
+    const searchInput = useRef();
     const { cart } = useStateValue();
-    const handleChange = e => {
-        setSearchInput(e.target.value)
-    }
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (!searchInput) return;
-        history.push(`/products/search/${searchInput}`)
+        if (!searchInput.current.value) return;
+        history.push(`/products/search/${searchInput.current.value}`)
     }
     return (
         <div className="header">
@@ -28,10 +25,7 @@ const Header = ({ history }) => {
                 />
             </Link>
             <form className="header__search" onSubmit={handleSubmit}>
-                <input type="text" className="header__searchInput"
-                    value={searchInput}
-                    onChange={handleChange}
-                />
+                <input ref={searchInput} type="text" className="header__searchInput" />
                 <Button type="submit" className="header__searchButton">
                     <SearchIcon className="header__searchIcon" onClick={handleSubmit} />
                 </Button>
