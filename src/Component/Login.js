@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import BackBtn from './Common/BackBtn'
 
 export default function Login() {
+
+    const history = useHistory();
+
     const [input, setInput] = useState({
         username: "",
         password: ""

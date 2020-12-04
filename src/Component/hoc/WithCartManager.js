@@ -9,7 +9,6 @@ export default function (ComposedClass) {
 
         const handleRemove = () => {
             removeFromCart(product.id);
-
         };
 
         const handleInput = (e) => {
