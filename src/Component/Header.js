@@ -9,7 +9,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 const Header = ({ history }) => {
     const [isOpenCart, setOpenCart] = useState(true);
     const searchInput = useRef();
-    const { cart } = useStateValue();
+    const { cart, user } = useStateValue();
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -33,8 +33,8 @@ const Header = ({ history }) => {
             <div className="header__nav">
                 <Link to="/login" className="header__link">
                     <div className="header__option">
-                        <span className="header__optionLine1">Hello login,</span>
-                        <span className="header__optionLine2">Sign In</span>
+                        <span className="header__optionLine1">{user ? `Hello ,${user.name}` : "Hello login,"}</span>
+                        <span className="header__optionLine2">{user ? "Sign out" : "Sign In"}</span>
                     </div>
                 </Link>
                 <Link to="/checkout" className="header__link">

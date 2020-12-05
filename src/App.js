@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Component/Header';
 import Footer from './Component/Footer';
-import { Home, Checkout, Login, ProductsPage, EachProduct } from './Component'
+import { Home, Checkout, Login, ProductsPage, EachProduct, Register } from './Component'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer, Flip, } from 'react-toastify';
 import './assets/FontAwsomeIcons'
@@ -22,7 +22,7 @@ function App() {
       />
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/products/search/:searchvalue" component={ProductsPage} />
         <Route path="/products/:cateValue" component={ProductsPage} />
         <Route path="/products" component={ProductsPage} />

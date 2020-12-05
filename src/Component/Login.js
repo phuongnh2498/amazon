@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { auth } from "../firebase"
 import { Link, useHistory } from 'react-router-dom'
 import BackBtn from './Common/BackBtn'
 
 export default function Login() {
 
     const history = useHistory();
+    const [errormsg, setErrormsg] = useState("");
 
     const [input, setInput] = useState({
         username: "",
@@ -16,12 +18,17 @@ export default function Login() {
         setInput({ ...input, [e.target.name]: newinput })
     }
 
-    const HandleSubmit = (e) => {
+    const HandleLogin = (e) => {
         e.preventDefault();
+        auth.signInWithEmailAndPassword(input.username, input.password)
+            .then(auth => {
+                if (auth)
+                    history.push("/")
+            }).catch(err => {
+                setErrormsg(err + "");
+            })
     }
-    const register = e => {
-        e.preventDefault();
-    }
+
     return (
         <>
             <BackBtn />
@@ -33,6 +40,7 @@ export default function Login() {
                 </div>
                 <div className="login__content">
                     <h1>Sign-In</h1>
+                    {errormsg && <span className="errormsg">{errormsg}</span>}
                     <div className="input__block username__block">
                         <label for="username">Username</label>
                         <input id="username" name="username" type="text" onChange={HandleText} value={input.username} />
@@ -42,10 +50,12 @@ export default function Login() {
                         <input id="password" name="password" type="password" onChange={HandleText} value={input.password} />
                     </div>
                     <div className="input__block sign__in">
-                        <button onClick={HandleSubmit}>Sign-in</button>
+                        <button onClick={HandleLogin} type="submit">Sign-in</button>
                     </div>
                     <div className="input__block register">
-                        <button onClick={HandleSubmit}>Create your amazon account</button>
+                        <Link to="/register">
+                            <button >Create account</button>
+                        </Link>
                     </div>
                 </div>
             </div>

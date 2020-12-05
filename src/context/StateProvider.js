@@ -8,7 +8,10 @@ export const StateProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    console.log(state)
+    const setUser = user => {
+        dispatch({ type: "SET_USER", user: user })
+    }
+
     const addToCart = product => {
         dispatch({ type: "ADD_TO_CART", product: product })
     }
@@ -28,6 +31,8 @@ export const StateProvider = ({ children }) => {
                 addToCart: addToCart,
                 removeFromCart: removeFromCart,
                 updateCart: updateCart,
+                setUser: setUser,
+                user: state.user
             }
         }>
             {children}
