@@ -11,7 +11,7 @@ const addNotify = (text, id) => {
     });
 }
 const setUser = (user, stateValue) => {
-    return { ...stateValue, payload: user }
+    return { ...stateValue, user: user }
 }
 const addToCart = (product, stateValue) => {
     const updatedCart = [...stateValue.cart]

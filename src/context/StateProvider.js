@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, useContext, useReducer, } from 'react'
 import { products } from '../mockData'
 import reducer, { initialState } from './reducer'
 
@@ -23,6 +23,8 @@ export const StateProvider = ({ children }) => {
     const updateCart = (productId, quantity) => {
         dispatch({ type: "UPDATE_CART", productId: productId, quantity: quantity })
     }
+
+
     return (
         <StateContext.Provider value={
             {

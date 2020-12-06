@@ -1,21 +1,38 @@
-import React, { useState, useMemo, useRef } from 'react'
+import React, { useState, useMemo, useRef, } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
-
 import Cart from './Common/Cart'
 import { useStateValue } from '../context/StateProvider'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { auth } from '../firebase';
+
 const Header = ({ history }) => {
     const [isOpenCart, setOpenCart] = useState(true);
     const searchInput = useRef();
-    const { cart, user } = useStateValue();
+    const { cart, user, } = useStateValue();
+
 
     const handleSubmit = e => {
         e.preventDefault();
         if (!searchInput.current.value) return;
         history.push(`/products/search/${searchInput.current.value}`)
     }
+    const handleLogOut = () => {
+        if (user) {
+            auth.signOut().then(auth => {
+                if (!auth)
+                    history.push('/login')
+            }
+            );
+        }
+    }
+
+    let userName = "";
+    if (user) {
+        userName = user.email.split('@')[0];
+    }
+
     return (
         <div className="header">
             <Link to="/">
@@ -31,10 +48,10 @@ const Header = ({ history }) => {
                 </Button>
             </form>
             <div className="header__nav">
-                <Link to="/login" className="header__link">
+                <Link to={!user ? "/login" : ""} className="header__link">
                     <div className="header__option">
-                        <span className="header__optionLine1">{user ? `Hello ,${user.name}` : "Hello login,"}</span>
-                        <span className="header__optionLine2">{user ? "Sign out" : "Sign In"}</span>
+                        <span className="header__optionLine1">{user ? `Hello ,${userName}` : "Hello login,"}</span>
+                        <span className="header__optionLine2" onClick={handleLogOut}>{user ? "Sign out" : "Sign In"}</span>
                     </div>
                 </Link>
                 <Link to="/checkout" className="header__link">

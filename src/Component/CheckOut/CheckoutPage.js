@@ -10,7 +10,7 @@ import { faCat } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function CheckOut() {
-  const { cart } = useStateValue();
+  const { cart,user } = useStateValue();
   let total = getCartTotal(cart);
   total = total.toLocaleString("en-US", { maximumFractionDigits: 2 });
 
@@ -20,13 +20,19 @@ export default function CheckOut() {
   };
     scrollTop()
   },[])
-
+  let userName = "";
+  if (user) {
+      userName = user.email.split('@')[0];
+  }
   return (
     <>
       <BackBtn />
       <div>
         <div className="productcart__container">
-          <h2 className="title">Shoping Cart</h2>
+        
+          <h2 className="title">{
+          // eslint-disable-next-line
+          user&&`${userName}`+"\'s Shoping Cart"}</h2>
           <div className="productcart__list">
             <ul>
               {cart.map(product => {

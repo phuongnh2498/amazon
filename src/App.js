@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, } from 'react';
+import { useStateValue } from './context/StateProvider'
 import Header from './Component/Header';
 import Footer from './Component/Footer';
+import { auth } from './firebase'
 import { Home, Checkout, Login, ProductsPage, EachProduct, Register } from './Component'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer, Flip, } from 'react-toastify';
@@ -8,6 +10,17 @@ import './assets/FontAwsomeIcons'
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const { setUser } = useStateValue();
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if (user)
+        setUser(user);
+      else
+        setUser(null);
+    })
+  }, [])// eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <Router>
       <Header />

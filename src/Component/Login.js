@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { auth } from "../firebase"
 import { Link, useHistory } from 'react-router-dom'
 import BackBtn from './Common/BackBtn'
 
-export default function Login() {
+export default function Login(props) {
+
+
+    const redirect = props.location.search
+        ? props.location.search.split('=')[1]
+        : '/';
 
     const history = useHistory();
     const [errormsg, setErrormsg] = useState("");
@@ -23,12 +28,17 @@ export default function Login() {
         auth.signInWithEmailAndPassword(input.username, input.password)
             .then(auth => {
                 if (auth)
-                    history.push("/")
+                    history.push(redirect)
             }).catch(err => {
                 setErrormsg(err + "");
             })
     }
-
+    const scrollTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    useEffect(() => {
+        scrollTop()
+    }, [])
     return (
         <>
             <BackBtn />
@@ -42,11 +52,11 @@ export default function Login() {
                     <h1>Sign-In</h1>
                     {errormsg && <span className="errormsg">{errormsg}</span>}
                     <div className="input__block username__block">
-                        <label for="username">Username</label>
+                        <label htmlFor="username">Username</label>
                         <input id="username" name="username" type="text" onChange={HandleText} value={input.username} />
                     </div>
                     <div className="input__block password__block">
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input id="password" name="password" type="password" onChange={HandleText} value={input.password} />
                     </div>
                     <div className="input__block sign__in">

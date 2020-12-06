@@ -39,9 +39,7 @@ export default function Register(props) {
                 setErrormsg(error + "")
             })
     }
-    const register = e => {
-        e.preventDefault();
-    }
+
     return (
         <>
             <BackBtn />
