@@ -7,8 +7,9 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartProduct from './CartProduct'
 import WithCartManager from '../hoc/WithCartManager'
 
-export default function Cart({ isOpenCart }) {
+export default function Cart({ isOpenCart, setOpenCart }) {
   const { cart } = useStateValue();
+
 
   let total = getCartTotal(cart);
   total = total.toLocaleString('en-US', { maximumFractionDigits: 2 })

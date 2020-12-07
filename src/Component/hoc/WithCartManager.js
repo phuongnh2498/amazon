@@ -6,7 +6,6 @@ export default function (ComposedClass) {
         let { product } = props;
         const { removeFromCart, updateCart } = useStateValue()
 
-
         const handleRemove = () => {
             removeFromCart(product.id);
         };

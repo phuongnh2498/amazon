@@ -137,3 +137,39 @@
     }
   }
 }
+@media screen and (max-width: 678px) {
+  .header__nav {
+    margin: 0;
+    font-weight: normal;
+    font-size: 12px;
+  }
+
+  .header__optionLine1,
+  .header__optionLine2 {
+    font-size: 9px;
+    font-weight: normal;
+  }
+  .header__searchIcon {
+    width: 20px !important;
+  }
+  .header__basketIcon {
+    font-size: 18px !important;
+  }
+  .header__basketCount {
+    font-size: 9px;
+    font-weight: bold;
+    width: 5px;
+    height: 5px;
+  }
+  .header__logo {
+    margin: 0;
+    max-width: 70px;
+  }
+  .header__optionBasket {
+    padding: 20px 10px 5px 10px;
+  }
+
+  .header__basketCount {
+    top: 20px;
+  }
+}

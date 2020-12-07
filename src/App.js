@@ -3,7 +3,7 @@ import { useStateValue } from './context/StateProvider'
 import Header from './Component/Header';
 import Footer from './Component/Footer';
 import { auth } from './firebase'
-import { Home, Checkout, Login, ProductsPage, EachProduct, Register } from './Component'
+import { Home, Checkout, Login, ProductsPage, EachProduct, Register, Payment } from './Component'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer, Flip, } from 'react-toastify';
 import './assets/FontAwsomeIcons'
@@ -34,6 +34,7 @@ function App() {
         draggable
       />
       <Switch>
+        <Route path="/payment" component={Payment} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/products/search/:searchvalue" component={ProductsPage} />

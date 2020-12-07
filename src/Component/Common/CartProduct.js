@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 const CartItem = ({ product, handleInput, handleAddMinus, handleRemove }) => {
 
-
     return (
         <li className="clearfix">
             <Link to={`../product/${product.id}`} className="item-title">

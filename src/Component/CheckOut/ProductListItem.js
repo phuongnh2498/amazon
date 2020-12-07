@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function ProductListItem({ product, handleRemove, handleInput, handleAddMinus }) {
+export default function ProductListItem({ key, product, handleRemove, handleInput, handleAddMinus }) {
 
 
     return (
@@ -20,7 +20,7 @@ export default function ProductListItem({ product, handleRemove, handleInput, ha
                 <button onClick={() => handleAddMinus("+")}>
                     <FontAwesomeIcon icon="plus" />
                 </button>
-                <input value={product.quantity} type="number" onChange={handleInput} />
+                <input id={key} value={product.quantity} type="number" onChange={handleInput} />
                 <button onClick={() => handleAddMinus("-")}>
                     <FontAwesomeIcon icon="minus" />
                 </button>

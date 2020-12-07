@@ -61,6 +61,9 @@
   &__list {
     & ul {
       list-style: none;
+      li {
+        margin-top: 1rem;
+      }
     }
   }
 }
@@ -131,4 +134,32 @@
 .paging {
   padding-top: 30px;
   text-align: center;
+}
+@media screen and (max-width: 678px) {
+  .leftsection {
+    padding: 1rem 2rem 0rem 2rem;
+    width: 100%;
+    display: flex;
+    max-width: 100%;
+    height: auto;
+    float: none;
+    justify-content: center;
+  }
+  .leftsection .leftsection__category {
+    min-height: 200px;
+  }
+  .leftsection__category h3 {
+    padding-bottom: 30px;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .leftsection__category ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .leftsection__category ul li {
+    text-decoration: underline;
+  }
 }

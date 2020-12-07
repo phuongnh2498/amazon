@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, } from 'react'
+import React, { useState, useMemo, useRef, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
@@ -10,8 +10,21 @@ import { auth } from '../firebase';
 const Header = ({ history }) => {
     const [isOpenCart, setOpenCart] = useState(true);
     const searchInput = useRef();
+    const ref = useRef();
     const { cart, user, } = useStateValue();
 
+    const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+            setOpenCart(true);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside, true);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -50,7 +63,7 @@ const Header = ({ history }) => {
             <div className="header__nav">
                 <Link to={!user ? "/login" : ""} className="header__link">
                     <div className="header__option">
-                        <span className="header__optionLine1">{user ? `Hello ,${userName}` : "Hello login,"}</span>
+                        <span className="header__optionLine1">{user ? `Hello ,${userName}` : "Hello Guest,"}</span>
                         <span className="header__optionLine2" onClick={handleLogOut}>{user ? "Sign out" : "Sign In"}</span>
                     </div>
                 </Link>
@@ -60,7 +73,7 @@ const Header = ({ history }) => {
                         <span className="header__optionLine2">& Orders</span>
                     </div>
                 </Link>
-                <div className="header__link header__cart">
+                <div className="header__link header__cart" ref={ref}>
                     <div className="header_option header__optionBasket" onClick={() => setOpenCart(prev => {
                         let last = prev;
                         return !last;
@@ -70,7 +83,6 @@ const Header = ({ history }) => {
                         <span className="header__basketCount">{cart.length}</span>
                     </div>
                     {useMemo(() => <Cart isOpenCart={isOpenCart} cart={cart} />, [isOpenCart, cart])}
-
                 </div>
 
             </div>

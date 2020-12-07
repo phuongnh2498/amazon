@@ -2,14 +2,14 @@ import React,{useEffect} from "react";
 import BackBtn from "../Common/BackBtn";
 import { useStateValue } from "../../context/StateProvider";
 import { getCartTotal } from "../../context/reducer";
+import {useHistory} from 'react-router-dom'
 import WithCartManager from '../hoc/WithCartManager'
 import ProductListItem from "./ProductListItem";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCat } from "@fortawesome/free-solid-svg-icons";
 
 
 
 export default function CheckOut() {
+  const history = useHistory();
   const { cart,user } = useStateValue();
   let total = getCartTotal(cart);
   total = total.toLocaleString("en-US", { maximumFractionDigits: 2 });
@@ -45,15 +45,13 @@ export default function CheckOut() {
             {cart?.length > 0 ? (
               <span className="text">
                 SubTotal: <span className="money">${total}</span>
+              <div className="checkout"><button onClick={()=>{history.push('/payment')}}>Check out</button></div>
               </span>
             ) : (
               <h3 className="non__item">You don't have any item in your cart</h3>
             )}
           </div>
         </div>
-        <div className="plug__bottom">
-              <h4>My github: <a href="https://github.com/boyhp0079">@HP<FontAwesomeIcon icon={faCat}/></a></h4>
-      </div>
       </div>
     </>
   );
