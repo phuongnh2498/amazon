@@ -1,5 +1,5 @@
 .footer {
-  width: 100%;
+  max-width: 100%;
   background-color: #232f3e;
   color: #fff;
   font-size: 13px;
@@ -52,5 +52,16 @@
       max-height: 300px;
       max-width: 270px;
     }
+  }
+}
+@media screen and (max-width: 678px) {
+  .footer__content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer__col {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
 }

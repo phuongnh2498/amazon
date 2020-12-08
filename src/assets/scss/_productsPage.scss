@@ -136,6 +136,9 @@
   text-align: center;
 }
 @media screen and (max-width: 678px) {
+  .main__container {
+    padding-top: 0;
+  }
   .leftsection {
     padding: 1rem 2rem 0rem 2rem;
     width: 100%;

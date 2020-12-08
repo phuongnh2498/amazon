@@ -63,6 +63,26 @@
 }
 
 @media (max-width: 678px) {
+  .svg-inline--fa {
+    font-size: 2rem !important;
+  }
+  #arrow-right {
+    padding-right: 35px;
+  }
+  #arrow-left {
+    padding-left: 15px;
+  }
+  .slide-arrow {
+    top: 0;
+    position: absolute;
+    height: 200px;
+    width: 2%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 2;
+  }
   .slide {
     height: 100%;
   }

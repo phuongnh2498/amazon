@@ -27,12 +27,14 @@ export default function CheckOut() {
   return (
     <>
       <BackBtn />
-      <div>
+      <div className="content">
         <div className="productcart__container">
-        
-          <h2 className="title">{
+          <h2 className="cart__title">{
           // eslint-disable-next-line
-          user&&`${userName}`+"\'s Shoping Cart"}</h2>
+          user&&`${userName}`+"\'s Shoping Cart"
+          }</h2>
+          <hr/>
+            <h2 className="cart__count">There are 5 items in your cart</h2>
           <div className="productcart__list">
             <ul>
               {cart.map(product => {
@@ -51,6 +53,31 @@ export default function CheckOut() {
               <h3 className="non__item">You don't have any item in your cart</h3>
             )}
           </div>
+        </div>
+        <div className="checkout__right">
+              <div className="checkout__content">
+                <div className="checkout__info">
+                  <div className="info__label">Subtotal</div>
+                  <div className="info__value">$50.00</div>
+                </div>
+                <div className="checkout__info">
+                  <div className="info__label">Subtotal</div>
+                  <div className="info__value">$50.00</div>
+                </div>                
+                <div className="checkout__info">
+                  <div className="info__label">Subtotal</div>
+                  <div className="info__value">$50.00</div>
+                </div>
+                <div className="checkout__info total">
+                  <div className="info__label">Order total</div>
+                  <div className="info__value">$50.00 USD</div>
+                </div>
+              </div>
+              <div>
+                <a href="#">
+
+                </a>
+              </div>
         </div>
       </div>
     </>

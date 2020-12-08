@@ -48,18 +48,21 @@ const Header = ({ history }) => {
 
     return (
         <div className="header">
-            <Link to="/">
+            <Link className="a__header__logo" to="/">
                 <img className="header__logo"
                     src="/amazonlogo.png"
                     alt=""
                 />
             </Link>
-            <form className="header__search" onSubmit={handleSubmit}>
-                <input ref={searchInput} type="text" className="header__searchInput" />
-                <Button type="submit" className="header__searchButton">
-                    <SearchIcon className="header__searchIcon" onClick={handleSubmit} />
-                </Button>
-            </form>
+            <div className="header__search">
+                <form onSubmit={handleSubmit}>
+                    <input ref={searchInput} type="text" className="header__searchInput" />
+                    <Button type="submit" className="header__searchButton">
+                        <SearchIcon className="header__searchIcon" onClick={handleSubmit} />
+                    </Button>
+                </form>
+            </div>
+
             <div className="header__nav">
                 <Link to={!user ? "/login" : ""} className="header__link">
                     <div className="header__option">

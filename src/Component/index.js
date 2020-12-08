@@ -5,4 +5,5 @@ import Payment from './PaymentPage/Payment'
 import Register from './Register'
 import ProductsPage from './Products/ProductsPage'
 import EachProduct from './ProductDetail/EachProductPage'
-export { Home, Checkout, Login, ProductsPage, EachProduct, Register, Payment }
+import NotFoundPage from './NotFoundPage'
+export { Home, Checkout, Login, ProductsPage, EachProduct, Register, Payment, NotFoundPage }

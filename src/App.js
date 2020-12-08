@@ -3,7 +3,7 @@ import { useStateValue } from './context/StateProvider'
 import Header from './Component/Header';
 import Footer from './Component/Footer';
 import { auth } from './firebase'
-import { Home, Checkout, Login, ProductsPage, EachProduct, Register, Payment } from './Component'
+import { Home, NotFoundPage, Checkout, Login, ProductsPage, EachProduct, Register, Payment } from './Component'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer, Flip, } from 'react-toastify';
 import './assets/FontAwsomeIcons'
@@ -42,7 +42,8 @@ function App() {
         <Route path="/products" component={ProductsPage} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/product/:id" component={EachProduct} />
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route path="*" component={NotFoundPage} />
       </Switch>
       <Footer />
     </Router>

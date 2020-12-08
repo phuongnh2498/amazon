@@ -69,6 +69,7 @@ nav {
 }
 
 .container {
+  top: 50px;
   display: none;
   opacity: 0;
   margin: auto;
@@ -243,4 +244,23 @@ nav {
   content: "";
   display: table;
   clear: both;
+}
+@media screen and (max-width: 678px) {
+  .shopping-cart {
+    width: 200px;
+  }
+  .shopping-cart-header {
+    width: 210px !important;
+  }
+  .item-quantity {
+    display: inline-flex;
+
+    padding-top: 3px;
+  }
+  .item-remove {
+    padding-top: 5px;
+  }
+  .svg-inline--fa {
+    font-size: 1rem !important;
+  }
 }

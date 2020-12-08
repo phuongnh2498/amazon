@@ -1,11 +1,17 @@
-.productcart__container {
+.content {
   min-height: 80vh;
-  padding-top: 30px;
   max-width: 1500px;
-  margin: 0 auto;
+}
+.productcart__container {
+  width: 66.66667%;
+  padding-top: 30px;
   height: 100%;
-  .title {
-    font-weight: 580;
+  .cart__title {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .cart__count {
+    font-size: 1.3rem;
   }
   .productcart__list {
     padding: 20px;
@@ -109,16 +115,5 @@
     }
   }
 }
-.plug__bottom {
-  height: 10vh;
-  text-align: center;
-  border-top: 1px solid rgb(0, 0, 0);
-  box-shadow: 3px 3px 5px 6px #ccc;
-  padding-top: 40px;
-  background-color: rgb(177, 172, 172);
-  h4 {
-    align-self: center;
-    font-weight: 600;
-    font-size: 1.4rem;
-  }
+.checkout__right {
 }
