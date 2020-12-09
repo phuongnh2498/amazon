@@ -1,12 +1,33 @@
-import React, { createContext, useContext, useReducer, } from 'react'
+import React, { createContext, useContext, useReducer, useEffect } from 'react'
 import { products } from '../mockData'
 import reducer, { initialState } from './reducer'
 
 export const StateContext = createContext()
 
+
+function getSavedValue(key) {
+    const savedValue = JSON.parse(localStorage.getItem(key))
+    if (savedValue) return savedValue
+
+    if (initialState instanceof Function) return initialState();
+
+    return initialState;
+}
+
 export const StateProvider = ({ children }) => {
 
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const KEY = "LOCAL_CART"
+
+    const savedValue = getSavedValue(KEY)
+
+    const [state, dispatch] = useReducer(reducer, savedValue)
+
+    useEffect(() => {
+
+        localStorage.setItem(KEY, JSON.stringify(state))
+
+    }, [state.cart, state.user, state])
+
 
     const setUser = user => {
         dispatch({ type: "SET_USER", user: user })

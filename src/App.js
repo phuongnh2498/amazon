@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const { setUser } = useStateValue();
 
+
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user)

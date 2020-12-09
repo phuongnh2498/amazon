@@ -9,11 +9,11 @@ export default function ProductListItem({ key, product, handleRemove, handleInpu
         <li className="productcart__listitem">
             <div className="productcart__title">
                 <div className="productcart__image">
-                    <Link to={`../product/${product.id}`}>
-                        <img src={product.image} alt="" />
-                    </Link>
+                    <img src={product.image} alt="" />
                 </div>
-                <span className="productcart__name">{product.name}</span>
+                <Link to={`../product/${product.id}`}>
+                    <div className="productcart__name">{product.title}</div>
+                </Link>
             </div>
 
             <span className="productcart__quantity">

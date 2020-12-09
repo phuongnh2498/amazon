@@ -1,7 +1,38 @@
-.content {
+.pay__container {
+  min-height: 100vh;
   padding-top: 30px;
   max-width: 1500px;
   margin: 0 auto;
   width: 100%;
-  min-height: 100vh;
+  .pay__content {
+    width: 66.66667%;
+    display: flex;
+    background-color: rgb(230, 229, 218);
+    flex-wrap: wrap;
+    .ship {
+      box-sizing: border-box;
+      border-radius: 3px;
+      width: 50%;
+      padding: 16px;
+      .ship__title {
+        width: 100%;
+      }
+    }
+    .check__out {
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+    }
+  }
+  .checkout__content {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 678px) {
+  .pay__content {
+    margin: 0 auto;
+  }
+  .pay__wrapper {
+    flex-direction: column;
+  }
 }
