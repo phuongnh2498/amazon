@@ -6,10 +6,16 @@ import { auth } from './firebase'
 import { Home, NotFoundPage, Checkout, Login, ProductsPage, EachProduct, Register, Payment } from './Component'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer, Flip, } from 'react-toastify';
+import { loadStripe } from "@stripe/stripe-js"
+import { Elements } from "@stripe/react-stripe-js"
+
 import './assets/FontAwsomeIcons'
 import 'react-toastify/dist/ReactToastify.css';
-
+const promise = loadStripe(
+  "pk_test_51HwrqYHtfvuHyk2a0InIWB57x84pEfFAk0xZFyehPi8QenkMC2cjjV8o7S6xLL4SnNV9h3H3ryMP2ZNTiT9Oj7US00TQKr1sTt"
+)
 function App() {
+
   const { setUser } = useStateValue();
 
 
@@ -35,7 +41,11 @@ function App() {
         draggable
       />
       <Switch>
-        <Route path="/payment" component={Payment} />
+        <Route path="/payment" >
+          <Elements stripe={promise}>
+            <Payment />
+          </Elements>
+        </Route>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/products/search/:searchvalue" component={ProductsPage} />
