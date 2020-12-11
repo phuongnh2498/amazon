@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BackBtn from '../Common/BackBtn'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CurrencyFormat from 'react-currency-format';
-
+import axios from "axios"
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import EachItemPayment from './EachItemPayment'
 import PayTotalCard from './PayTotalCard'
 import { useStateValue } from '../../context/StateProvider'
@@ -16,18 +16,43 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { getCartTotal } from '../../context/reducer';
 
 export default function Payment() {
+    const history = useHistory()
     const stripe = useStripe();
     const elements = useElements();
     const { cart } = useStateValue();
 
+    const total = getCartTotal(cart);
     const [error, setError] = useState(null)
     const [disable, SetDisable] = useState(true)
 
     const [succeeded, setSucceeded] = useState(false)
     const [processing, setProcessing] = useState("")
 
-    const handleSubmit = e => {
-
+    const [clientSecret, setClientSecret] = useState(true)
+    useEffect(() => {
+        const getClientSecret = async () => {
+            const response = await axios({
+                method: 'post',
+                url: `http://localhost:5001/my-scuff/us-central1/api/payments/create?total=${total * 100}`
+            })
+            setClientSecret(response.data.clientSecret)
+        }
+        getClientSecret();
+    }, [cart])
+    console.log('client secret: ', clientSecret)
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setProcessing(true)
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: elements.getElement(CardElement)
+            }
+        }).then(({ paymentIntent }) => {
+            setSucceeded(true)
+            setError(null)
+            setProcessing(false)
+            history.replace('/orders')
+        })
     }
     const handleChange = e => {
         SetDisable(e.empty);
@@ -127,7 +152,7 @@ export default function Payment() {
                         <div className="ship">
                             <Typography className="ship__title" variant="h6" gutterBottom>
                                 Contact Email
-                     </Typography>
+                            </Typography>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
@@ -165,17 +190,17 @@ export default function Payment() {
                                         <h3>Order Total: {value}</h3>
                                     )}
                                     decimalScale={2}
-                                    value={getCartTotal(cart)}
+                                    value={total}
                                     displayType={"text"}
                                     thousandSeparator={true}
                                     prefix={"$"}
                                 />
                             </div>
-                            <CardElement />
+                            <CardElement onChange={handleChange} />
                         </div>
 
                         <div className="check__out">
-                            <Button disable={processing || disable || succeeded} variant="contained" color="primary" className="btn__checkou">
+                            <Button disabled={processing || disable || succeeded} variant="contained" color="primary" className="btn__checkou" type="submit">
                                 {processing ? "processing..." : "Checkout"}
                             </Button>
                         </div>

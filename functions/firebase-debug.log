@@ -1,0 +1,28 @@
+[debug] [2020-12-11T16:32:31.403Z] ----------------------------------------------------------------------
+[debug] [2020-12-11T16:32:31.407Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\84911\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2020-12-11T16:32:31.407Z] CLI Version:   8.18.1
+[debug] [2020-12-11T16:32:31.408Z] Platform:      win32
+[debug] [2020-12-11T16:32:31.408Z] Node Version:  v12.16.3
+[debug] [2020-12-11T16:32:31.411Z] Time:          Fri Dec 11 2020 23:32:31 GMT+0700 (Indochina Time)
+[debug] [2020-12-11T16:32:31.411Z] ----------------------------------------------------------------------
+[debug] [2020-12-11T16:32:31.411Z] 
+[debug] [2020-12-11T16:32:31.426Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-11T16:32:31.427Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2020-12-11T16:32:33.480Z] [hub] writing locator at C:\Users\84911\AppData\Local\Temp\hub-my-scuff.json
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub\u001b[22m"}}
+[info] +  functions: Using node@12 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@12 from host."}}
+[debug] [2020-12-11T16:32:35.553Z] defaultcredentials: writing to file C:\Users\84911\AppData\Roaming\firebase\boyhp0079_gmail_com_application_default_credentials.json
+[debug] [2020-12-11T16:32:35.558Z] Setting GAC to C:\Users\84911\AppData\Roaming\firebase\boyhp0079_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\84911\\AppData\\Roaming\\firebase\\boyhp0079_gmail_com_application_default_credentials.json"}}
+[debug] [2020-12-11T16:32:39.593Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2020-12-11T16:32:39.593Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2020-12-11T16:32:39.594Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\84911\\.cache\\firebase\\emulators\\ui-v1.3.0\\server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\84911\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.3.0\\\\server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2020-12-11T16:32:39.725Z] Web / API server started at http://localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at http://localhost:4000\n"}}
+[info] i  functions: Watching "C:\Users\84911\Documents\Wat\amazon\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\84911\\Documents\\Wat\\amazon\\functions\" for Cloud Functions..."}}
+[debug] [2020-12-11T16:32:40.139Z] [worker-pool] addWorker(~diagnostic~) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(~diagnostic~)"}}
+[debug] [2020-12-11T16:32:40.139Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key ~diagnostic~, total=1"}}
+[debug] [2020-12-11T16:32:40.140Z] [worker-pool] submitWork(triggerId=) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=)"}}
+[debug] [2020-12-11T16:32:40.141Z] [worker-~diagnostic~-690ca3b3-ed00-4082-b298-e3aad21586ee]: Assigning socketPath: \\?\pipe\C:\Users\84911\Documents\Wat\amazon\functions\9516 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-690ca3b3-ed00-4082-b298-e3aad21586ee]: Assigning socketPath: \\\\?\\pipe\\C:\\Users\\84911\\Documents\\Wat\\amazon\\functions\\9516"}}
+[debug] [2020-12-11T16:32:40.141Z] [worker-~diagnostic~-690ca3b3-ed00-4082-b298-e3aad21586ee]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-690ca3b3-ed00-4082-b298-e3aad21586ee]: BUSY"}}
