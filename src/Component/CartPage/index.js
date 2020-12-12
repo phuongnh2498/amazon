@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import BackBtn from "../Common/BackBtn";
 import { useStateValue } from "../../context/StateProvider";
 import { getCartTotal } from "../../context/reducer";
-import { useHistory, Link } from 'react-router-dom'
-
+import { useHistory, } from 'react-router-dom'
+import PayTotalCard from "../Common/PayTotalCard"
 import WithCartManager from '../hoc/WithCartManager'
 import ProductListItem from "./ProductListItem";
-import Lock from "@material-ui/icons/Lock";
 
 
 export default function CheckOut() {
@@ -50,29 +49,7 @@ export default function CheckOut() {
             </div>
           </div>
           <div className="checkout__right">
-            <div className="checkout__content">
-              <div className="checkout__info">
-                <div className="info__label">Subtotal</div>
-                <div className="info__value">$50.00</div>
-              </div>
-              <div className="checkout__info">
-                <div className="info__label">Subtotal</div>
-                <div className="info__value">$50.00</div>
-              </div>
-              <div className="checkout__info">
-                <div className="info__label">Subtotal</div>
-                <div className="info__value">$50.00</div>
-              </div>
-              <div className="checkout__info total">
-                <div className="info__label">Order total</div>
-                <div className="info__value">$50.00 USD</div>
-              </div>
-              <div className="checkout__button">
-                <Link to="/payment" >
-                  <Lock className="lock__icon"></Lock>Checkout
-                </Link>
-              </div>
-            </div>
+            <PayTotalCard cart={cart} />
           </div>
         </div>
       </div>

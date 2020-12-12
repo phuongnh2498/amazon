@@ -10,16 +10,16 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { Button } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
 import EachItemPayment from './EachItemPayment'
-import PayTotalCard from './PayTotalCard'
+import PayTotalCard from '../Common/PayTotalCard'
 import { useStateValue } from '../../context/StateProvider'
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { getCartTotal } from '../../context/reducer';
-
+import { firestore } from "../../firebase";
 export default function Payment() {
     const history = useHistory()
     const stripe = useStripe();
     const elements = useElements();
-    const { cart } = useStateValue();
+    const { user, cart, emptyCart } = useStateValue();
 
     const total = getCartTotal(cart);
     const [error, setError] = useState(null)
@@ -38,6 +38,7 @@ export default function Payment() {
             setClientSecret(response.data.clientSecret)
         }
         getClientSecret();
+        // eslint-disable-next-line 
     }, [cart])
     console.log('client secret: ', clientSecret)
     const handleSubmit = async (e) => {
@@ -47,10 +48,27 @@ export default function Payment() {
             payment_method: {
                 card: elements.getElement(CardElement)
             }
-        }).then(({ paymentIntent }) => {
+        }).then(async ({ paymentIntent }) => {
+
+            await firestore
+                .collection('users')
+                .doc(user?.uid)
+                .collection('orders')
+                .doc(paymentIntent.id)
+                .set({
+                    cart: cart,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created
+                }).catch(err => {
+                    console.log(err)
+                })
+
             setSucceeded(true)
             setError(null)
             setProcessing(false)
+
+            emptyCart();
+
             history.replace('/orders')
         })
     }
@@ -198,7 +216,6 @@ export default function Payment() {
                             </div>
                             <CardElement onChange={handleChange} />
                         </div>
-
                         <div className="check__out">
                             <Button disabled={processing || disable || succeeded} variant="contained" color="primary" className="btn__checkou" type="submit">
                                 {processing ? "processing..." : "Checkout"}

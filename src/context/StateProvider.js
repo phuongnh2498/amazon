@@ -36,6 +36,9 @@ export const StateProvider = ({ children }) => {
     const addToCart = product => {
         dispatch({ type: "ADD_TO_CART", product: product })
     }
+    const emptyCart = () => {
+        dispatch({ type: "EMPTY_CART" })
+    }
 
     const removeFromCart = productId => {
         dispatch({ type: "REMOVE_FROM_CART", productId: productId })
@@ -55,7 +58,8 @@ export const StateProvider = ({ children }) => {
                 removeFromCart: removeFromCart,
                 updateCart: updateCart,
                 setUser: setUser,
-                user: state.user
+                user: state.user,
+                emptyCart: emptyCart
             }
         }>
             {children}

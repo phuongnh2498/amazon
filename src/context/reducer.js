@@ -1,4 +1,4 @@
-import { addToCart, removeFromCart, updateCart, setUser } from '../actions/actions'
+import { addToCart, removeFromCart, updateCart, setUser, emptyCart } from '../actions/actions'
 export const getCartTotal = cart => cart?.reduce((cur, product) => cur + product.price * product.quantity, 0)
 
 
@@ -16,6 +16,8 @@ const reducer = (state, action) => {
             return addToCart(action.product, state)
         case 'REMOVE_FROM_CART':
             return removeFromCart(action.productId, state)
+        case 'EMPTY_CART':
+            return emptyCart(state)
         case 'UPDATE_CART':
             return updateCart(action.productId, action.quantity, state)
         default:

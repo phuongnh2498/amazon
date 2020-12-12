@@ -18,9 +18,9 @@ export default function Cart({ isOpenCart, setOpenCart }) {
       <div className="shopping-cart">
         <div className="shopping-cart-header">
           <div className="header__leftbasket">
-            <Link to="/checkout" className="basket__checkout">
+            <Link to="/cart" className="basket__checkout">
               <ShoppingCartIcon className="header__basketIcon" />
-              <span>Check Out</span>
+              <span>Go to cart</span>
             </Link>
           </div>
           <div className="shopping-cart-total">

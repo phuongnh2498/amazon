@@ -21,7 +21,6 @@ app.post('/payments/create', async (request, response) => {
         currency: "usd",
         payment_method_types: ['card'],
     })
-
     response.status(201).send({
         clientSecret: paymentItent.client_secret
     })

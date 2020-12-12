@@ -1,9 +1,10 @@
 import Home from './Home/HomePage'
-import Checkout from './CheckOut/CheckoutPage'
+import CartPage from './CartPage'
 import Login from './Login'
 import Payment from './PaymentPage/Payment'
 import Register from './Register'
 import ProductsPage from './Products/ProductsPage'
 import EachProduct from './ProductDetail/EachProductPage'
 import NotFoundPage from './NotFoundPage'
-export { Home, Checkout, Login, ProductsPage, EachProduct, Register, Payment, NotFoundPage }
+import Orders from './Orders'
+export { Orders, Home, CartPage, Login, ProductsPage, EachProduct, Register, Payment, NotFoundPage }

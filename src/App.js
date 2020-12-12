@@ -3,7 +3,7 @@ import { useStateValue } from './context/StateProvider'
 import Header from './Component/Header';
 import Footer from './Component/Footer';
 import { auth } from './firebase'
-import { Home, NotFoundPage, Checkout, Login, ProductsPage, EachProduct, Register, Payment } from './Component'
+import { Home, Orders, NotFoundPage, CartPage, Login, ProductsPage, EachProduct, Register, Payment } from './Component'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer, Flip, } from 'react-toastify';
 import { loadStripe } from "@stripe/stripe-js"
@@ -46,12 +46,13 @@ function App() {
             <Payment />
           </Elements>
         </Route>
+        <Route path="/orders" component={Orders} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/products/search/:searchvalue" component={ProductsPage} />
         <Route path="/products/:cateValue" component={ProductsPage} />
         <Route path="/products" component={ProductsPage} />
-        <Route path="/checkout" component={Checkout} />
+        <Route path="/cart" component={CartPage} />
         <Route path="/product/:id" component={EachProduct} />
         <Route exact path="/" component={Home} />
         <Route path="*" component={NotFoundPage} />

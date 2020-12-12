@@ -50,4 +50,7 @@ const updateCart = (productId, quantity, stateValue) => {
 
     return { ...stateValue, cart: updatedCart }
 }
-export { addNotify, updateCart, removeFromCart, addToCart, setUser }
+const emptyCart = (stateValue) => {
+    return { ...stateValue, cart: [] }
+}
+export { addNotify, updateCart, removeFromCart, addToCart, setUser, emptyCart }

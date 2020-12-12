@@ -1,5 +1,8 @@
 import React from 'react'
 import { getCartTotal } from '../../context/reducer'
+import Lock from "@material-ui/icons/Lock";
+import { Link } from 'react-router-dom'
+
 export default function PayTotalCard({ cart }) {
 
     let total = getCartTotal(cart);
@@ -20,7 +23,9 @@ export default function PayTotalCard({ cart }) {
                 <div className="info__value">${total}USD</div>
             </div>
             <div className="checkout__button">
-                Checkout
+                <Link to="/payment" >
+                    <Lock className="lock__icon"></Lock>Checkout
+                </Link>
             </div>
         </div>
     )

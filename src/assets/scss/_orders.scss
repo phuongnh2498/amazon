@@ -1,0 +1,23 @@
+.orders__container {
+  min-height: 100vh;
+  padding-top: 30px;
+  max-width: 1500px;
+  margin: 0 auto;
+  .orders__content {
+    padding: 20px;
+    .order {
+      text-align: center;
+    }
+  }
+  .cart__item {
+    padding: 20px 20px 40px 20px !important;
+    margin-bottom: 20px;
+    text-align: start;
+    .item__image {
+      width: 100px;
+    }
+    font-size: 1rem;
+    color: #444444;
+    border-bottom: 1px solid #948f8f;
+  }
+}
