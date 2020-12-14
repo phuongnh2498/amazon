@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react'
-import { products } from '../mockData'
+import React, { createContext, useContext, useReducer, useEffect, useState } from 'react'
 import reducer, { initialState } from './reducer'
-
+import axios from 'axios'
 export const StateContext = createContext()
 
 
@@ -16,6 +15,8 @@ function getSavedValue(key) {
 
 export const StateProvider = ({ children }) => {
 
+    const [products, setProducts] = useState([])
+
     const KEY = "LOCAL_CART"
 
     const savedValue = getSavedValue(KEY)
@@ -23,7 +24,13 @@ export const StateProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, savedValue)
 
     useEffect(() => {
+        const fetchProducts = async () => {
+            const temp = await axios.get("https://fakestoreapi.com/products").catch(err => { console.log(err) });
+            console.log(temp.data);
+            setProducts([...temp.data]);
+        }
 
+        fetchProducts();
         localStorage.setItem(KEY, JSON.stringify(state))
 
     }, [state.cart, state.user, state])
