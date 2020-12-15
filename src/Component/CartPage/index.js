@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import BackBtn from "../Common/BackBtn";
 import { useStateValue } from "../../context/StateProvider";
 import { getCartTotal } from "../../context/reducer";
-import { useHistory, } from 'react-router-dom'
 import PayTotalCard from "../Common/PayTotalCard"
 import WithCartManager from '../hoc/WithCartManager'
 import ProductListItem from "./ProductListItem";
 
 
 export default function CheckOut() {
-  const history = useHistory();
   const { cart, user } = useStateValue();
+  //eslint-disable-next-line
   let total = getCartTotal(cart);
   total = total.toLocaleString("en-US", { maximumFractionDigits: 2 });
 
@@ -37,7 +36,7 @@ export default function CheckOut() {
 
           <div className="productcart__container">
 
-            <h2 className="cart__count">There are 5 items in your cart</h2>
+            <h2 className="cart__count">There are {cart.length} items in your cart</h2>
             <div className="productcart__list">
               <ul>
                 {cart?.length > 0 ? cart.map(product => {

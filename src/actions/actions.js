@@ -10,7 +10,7 @@ const addNotify = (text, id) => {
         toastId: id
     });
 }
-const setUser = (user, stateValue) => {
+const loginUser = (user, stateValue) => {
     return { ...stateValue, user: user }
 }
 const addToCart = (product, stateValue) => {
@@ -53,4 +53,4 @@ const updateCart = (productId, quantity, stateValue) => {
 const emptyCart = (stateValue) => {
     return { ...stateValue, cart: [] }
 }
-export { addNotify, updateCart, removeFromCart, addToCart, setUser, emptyCart }
+export { addNotify, updateCart, removeFromCart, addToCart, loginUser, emptyCart }

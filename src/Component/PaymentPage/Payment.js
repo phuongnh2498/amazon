@@ -30,6 +30,11 @@ export default function Payment() {
 
     const [clientSecret, setClientSecret] = useState(true)
     useEffect(() => {
+        !user && history.push('/login')
+        //eslint-disable-next-line
+    }, [])
+
+    useEffect(() => {
         const getClientSecret = async () => {
             const response = await axios({
                 method: 'post',
@@ -44,6 +49,7 @@ export default function Payment() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setProcessing(true)
+        // eslint-disable-next-line 
         const payload = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement)
@@ -225,7 +231,7 @@ export default function Payment() {
                     </form>
                 </div>
                 <div className="pay__credential">
-                    <PayTotalCard cart={cart} />
+                    <PayTotalCard cart={cart} isPayOutPage={true} />
                     <div className="cart__right">
                         <Grid container spacing={3} className="cart__content">
                             <div className="heading__cart">

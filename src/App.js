@@ -1,13 +1,12 @@
-import React, { useEffect, } from 'react';
-import { useStateValue } from './context/StateProvider'
+import React from 'react';
 import Header from './Component/Header';
 import Footer from './Component/Footer';
-import { auth } from './firebase'
 import { Home, Orders, NotFoundPage, CartPage, Login, ProductsPage, EachProduct, Register, Payment } from './Component'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer, Flip, } from 'react-toastify';
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
+import PrivateRoute from "./Component/PrivateRoute"
 
 import './assets/FontAwsomeIcons'
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,18 +14,6 @@ const promise = loadStripe(
   "pk_test_51HwrqYHtfvuHyk2a0InIWB57x84pEfFAk0xZFyehPi8QenkMC2cjjV8o7S6xLL4SnNV9h3H3ryMP2ZNTiT9Oj7US00TQKr1sTt"
 )
 function App() {
-
-  const { setUser } = useStateValue();
-
-
-  useEffect(() => {
-    auth.onAuthStateChanged(user => {
-      if (user)
-        setUser(user);
-      else
-        setUser(null);
-    })
-  }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Router>
@@ -46,7 +33,7 @@ function App() {
             <Payment />
           </Elements>
         </Route>
-        <Route path="/orders" component={Orders} />
+        <PrivateRoute path="/orders" component={Orders} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/products/search/:searchvalue" component={ProductsPage} />

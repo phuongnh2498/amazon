@@ -1,27 +1,18 @@
 import React, { createContext, useContext, useReducer, useEffect, useState } from 'react'
-import reducer, { initialState } from './reducer'
+import reducer, { initialState, CARTKEY, USERKEY } from './reducer'
 import axios from 'axios'
+import { auth } from '../firebase'
 export const StateContext = createContext()
 
 
-function getSavedValue(key) {
-    const savedValue = JSON.parse(localStorage.getItem(key))
-    if (savedValue) return savedValue
 
-    if (initialState instanceof Function) return initialState();
-
-    return initialState;
-}
 
 export const StateProvider = ({ children }) => {
 
     const [products, setProducts] = useState([])
 
-    const KEY = "LOCAL_CART"
+    const [state, dispatch] = useReducer(reducer, initialState)
 
-    const savedValue = getSavedValue(KEY)
-
-    const [state, dispatch] = useReducer(reducer, savedValue)
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -31,13 +22,15 @@ export const StateProvider = ({ children }) => {
         }
 
         fetchProducts();
-        localStorage.setItem(KEY, JSON.stringify(state))
+        localStorage.setItem(CARTKEY, JSON.stringify(state.cart))
+    }, [state.cart])
 
-    }, [state.cart, state.user, state])
 
-
+    const logoutUser = () => {
+        dispatch({ type: "LOGOUT_USER" })
+    }
     const setUser = user => {
-        dispatch({ type: "SET_USER", user: user })
+        dispatch({ type: "LOGIN_USER", user: user })
     }
 
     const addToCart = product => {
@@ -55,6 +48,15 @@ export const StateProvider = ({ children }) => {
         dispatch({ type: "UPDATE_CART", productId: productId, quantity: quantity })
     }
 
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user)
+                setUser(user);
+            else
+                logoutUser();
+        })
+        localStorage.setItem(USERKEY, JSON.stringify(state.user))
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <StateContext.Provider value={
@@ -66,7 +68,8 @@ export const StateProvider = ({ children }) => {
                 updateCart: updateCart,
                 setUser: setUser,
                 user: state.user,
-                emptyCart: emptyCart
+                emptyCart: emptyCart,
+                logoutUser: logoutUser,
             }
         }>
             {children}
